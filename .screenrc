@@ -1,0 +1,43 @@
+# Customized screenrc file.
+#
+# Maintainer:	Marek Balint <mareq@balint.eu>
+# Original source: Pádraig Brady (http://www.pixelbeat.org/settings/.screenrc)
+# Last change:	2013 Aug 26
+
+
+# Remap escape key to C-\
+#escape ^\\
+
+# Set $TERM
+term xterm-color
+
+# Turn off startup message
+startup_message off
+
+# Status bar
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{.kB} %-w%{..W}%n %t%{-}%+W%=[%u@%H:%S] [%l] [%D] [%0d.%0m.%Y] [%0c:%0s] "
+
+# Don't block command output if the terminal stops responding
+# (like if the ssh connection times out for example).
+# Source: Stephen Shirley
+nonblock on
+
+# Allow editors etc. to restore display on exit
+# rather than leaving existing text in place
+altscreen on
+
+# Enable 256-color mode when screen is started with TERM=xterm-256color
+# Taken from: http://frexx.de/xterm-256-notes/
+#
+# Note that TERM != "xterm-256color" within a screen window. Rather it is
+# "screen" or "screen-bce"
+# 
+# terminfo and termcap for nice 256 color terminal
+# allow bold colors - necessary for some reason
+attrcolor b ".I"
+# tell screen how to set colors. AB = background, AF=foreground
+#termcapinfo xterm-256color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+

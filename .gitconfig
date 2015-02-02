@@ -1,0 +1,15 @@
+[user]
+	name = Mareq
+	email = mareq@balint.eu
+[core]
+	editor = vim
+[diff]
+	external = ~/.git_diff_wrapper
+[pager]
+	diff =
+[merge]
+	tool = vimdiff
+[interactive]
+	singlekey = true
+[alias]
+	unstage = reset --

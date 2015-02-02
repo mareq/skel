@@ -1,0 +1,17 @@
+# Customized vimperatorrc file.
+#
+# Maintainer:	Marek Balint <mareq@balint.eu>
+# Last change:	2014 Apr 19
+
+nnoremap <silent> ,/ :nohlsearch<CR><ESC>
+nnoremap <silent> ,,hup :source ~/.vimperatorrc<CR>
+nnoremap <silent> ,l :tabnext<CR>
+nnoremap <silent> <C-a>n :tabnext<CR>
+nnoremap <silent> ,h :tabprevious<CR>
+nnoremap <silent> <C-a>p :tabprevious<CR>
+nnoremap <silent> ,,k :tabnew<CR>
+nnoremap <silent> ,,j :tabclose<CR>
+nnoremap <silent> ,H :tabmove -1<CR>
+nnoremap <silent> ,L :tabmove +1<CR>
+
+
