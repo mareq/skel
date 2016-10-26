@@ -1,0 +1,39 @@
+# If we are actually started by as /bin/csh, I would 
+# prefer to know we are actually the tcsh
+if ($?SHELL) then
+    if ($SHELL == "/bin/csh") then
+	setenv SHELL /bin/tcsh
+    endif
+endif
+
+set history = 2000          # History remembered is 2000
+set savehist = (2000 merge) # Save and merge with existing saved 
+set histfile = ~/.tcsh_history
+
+alias ls ls --color=auto
+alias grep grep --color=auto
+
+alias ll ls -al
+
+set prompt = "%{\033[01;32m%}%n%{\33[01;33m%}@%{\33[01;34m%}%m%{\33[01;31m%}:%{\33[01;33m%}%?%{\33[01;31m%}:%{\33[01;33m%}%~%{\33[00m%}> "
+
+# Turn vi-mode on
+bindkey -v
+# Insert mode key bindings
+bindkey -k -- up history-search-backward
+bindkey -b -- C-p history-search-backward
+bindkey -k -- down history-search-forward
+bindkey -b -- C-n history-search-forward
+bindkey -b -- C-l clear-screen
+# Normal mode key bindings
+bindkey -a -k -- up history-search-backward
+bindkey -a -b -- C-p history-search-backward
+bindkey -a -- - history-search-backward
+bindkey -a -- k history-search-backward
+bindkey -a -k -- down history-search-forward
+bindkey -a -b -- C-n history-search-forward
+bindkey -a -- + history-search-forward
+bindkey -a -- j history-search-forward
+bindkey -a -b -- C-l clear-screen
+
+

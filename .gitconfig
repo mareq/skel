@@ -3,13 +3,18 @@
 	email = mareq@balint.eu
 [core]
 	editor = vim
+	autocrlf = false
 [diff]
-	external = ~/.git_diff_wrapper
+  tool = vimdiff
 [pager]
 	diff =
 [merge]
 	tool = vimdiff
 [interactive]
 	singlekey = true
+[push]
+	default = simple
 [alias]
 	unstage = reset --
+	dt = difftool
+	l = log --oneline

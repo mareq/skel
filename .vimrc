@@ -1,7 +1,7 @@
 " Customized vimrc file.
 "
 " Maintainer:  Marek Balint <mareq@balint.eu>
-" Last change: 2014 Apr 11
+" Last change: 2016 Oct 26
 "
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -124,8 +124,8 @@ nnoremap <silent> ,N :set invnumber number?<CR>
 set nocursorline
 " Show special characters
 set list
-"set listchars=eol:$,tab:»-,trail:•,extends:»,precedes:«,nbsp:•
-set listchars=eol:$,tab:»-,extends:»,precedes:«,nbsp:.
+set listchars=eol:$,tab:»-,trail:•,extends:»,precedes:«,nbsp:•
+"set listchars=eol:$,tab:»-,extends:»,precedes:«,nbsp:.
 " Map ,; key to toggle showing list characters
 nnoremap <silent> ,; :set invlist list?<CR>
 " Turn off text wrapping
@@ -249,11 +249,13 @@ nnoremap <silent> <C-\> ,
 " Write backup file, then write changes and remove backup file
 set nobackup
 set writebackup
+" Turn off swap files
+set directory^=$HOME/.vim/swp//
 " Use *.ci extension for CPP files
-au BufNewFile,BufRead *.ci setf cpp
+au BufNewFile,BufRead *.ci setfiletype cpp
 " Use *.msg and *.inc extensions for XML files
-"au BufNewFile,BufRead *.msg setf xml
-"au BufNewFile,BufRead *.inc setf xml
+"au BufNewFile,BufRead *.msg setfiletype xml
+"au BufNewFile,BufRead *.inc setfiletype xml
 " Remap * key to *N
 nnoremap <silent> * *N
 " Remap * key (in visual mode) to search for selected text (forward)
@@ -274,10 +276,16 @@ vnoremap <silent> # :<C-U>
 nnoremap <silent> ,,q :qall<CR>
 " Map ,r key to refresh current buffer
 nnoremap <silent> ,r :edit<CR>
+" Map ,R key to refresh all buffers on all tabsd
+nnoremap <silent> ,R :tabdo exec 'windo edit'<CR>
+" Map ,s key to toggle swap files
+nnoremap <silent> ,s :set invswapfile swapfile?<CR>
 " Map ,/ key to switch off highlighting the last used search pattern
 nnoremap ,/ :nohlsearch<CR>
 " Map ,! key to show highlight group of object under cursor
 nnoremap <silent> ,! :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+" Map ,,cpp key to set file type to C++
+nnoremap <silent> ,,cpp :set filetype=cpp<CR>
 " Map ,,hup key to source configuration file
 nnoremap <silent> ,,hup :source ~/.vimrc<CR>
 " Load filetype plugin for man pages (enable :Man and \K commands)
@@ -515,6 +523,8 @@ let g:pdf_convert_on_edit = 1
 "   ,p          paste "+ register
 "   ,P          paste "+ register
 "   ,r          refresh current buffer
+"   ,R          refresh all buffers on all tabsd
+"   ,s          toggle swap files
 "   ,t          toggle expandtabs option
 "   ,w          toggle text wrapping
 "   ,y          yank into "+ register
@@ -531,8 +541,9 @@ let g:pdf_convert_on_edit = 1
 "   ,,k         open new tab
 "   ,,p         paste "0 register
 "   ,,P         paste "0 register
-"   ,,q         cloase all buffers (:qall)
+"   ,,q         close all buffers (:qall)
 
+"   ,,cpp       set file type to C++
 "   ,,ctags     generate ctags
 "   ,,hup       source configuration file
 "   ,,rs        run command in new horizontal buffer
