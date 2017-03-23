@@ -1,6 +1,6 @@
 " Vim color file
-" Maintainer:	Marek Balint <mareq@balint.eu>
-" Last Change:	2013 Jul 04
+" Maintainer: Marek Balint <mareq@balint.eu>
+" Last change: 2016 Nov 09
 
 " First remove all existing highlighting.
 set background=dark
@@ -41,7 +41,7 @@ hi StatusLineNC term=reverse cterm=reverse gui=reverse
 hi VertSplit term=reverse cterm=reverse gui=reverse
 hi Visual term=reverse ctermbg=Yellow ctermfg=DarkBlue guibg=grey60
 hi VisualNOS term=underline,bold cterm=underline,bold gui=underline,bold
-hi DiffText term=reverse cterm=bold ctermbg=Red gui=bold guibg=Red
+hi DiffText term=reverse cterm=bold ctermbg=Red ctermfg=LightGray gui=bold guibg=Red
 hi Cursor guibg=Green guifg=Black
 hi lCursor guibg=Cyan guifg=Black
 hi MatchParen term=bold ctermfg=White ctermbg=DarkGray guifg=Blue guibg=#201F1F
@@ -56,9 +56,9 @@ hi WarningMsg term=standout ctermfg=LightRed guifg=Red
 hi WildMenu term=standout ctermbg=Yellow ctermfg=Black guibg=Yellow guifg=Black
 hi Folded term=standout ctermbg=LightGrey ctermfg=DarkBlue guibg=LightGrey guifg=DarkBlue
 hi FoldColumn term=standout ctermbg=LightGrey ctermfg=DarkBlue guibg=Grey guifg=DarkBlue
-hi DiffAdd term=bold ctermbg=DarkBlue guibg=DarkBlue
-hi DiffChange term=bold ctermbg=DarkMagenta guibg=DarkMagenta
-hi DiffDelete term=bold ctermfg=Blue ctermbg=DarkCyan gui=bold guifg=Blue guibg=DarkCyan
+hi DiffAdd term=bold ctermbg=DarkCyan ctermfg=LightGray guibg=DarkCyan
+hi DiffChange term=bold ctermbg=DarkBlue ctermfg=LightGray guibg=DarkBlue
+hi DiffDelete term=bold ctermbg=DarkGray ctermfg=Red gui=bold guifg=Red guibg=DarkGray
 hi CursorColumn term=reverse ctermbg=Black guibg=grey40
 hi CursorLine term=underline cterm=underline guibg=grey40
 hi Pmenu ctermbg=Blue ctermfg=Yellow
@@ -127,4 +127,7 @@ hi treeExecFile ctermfg=Green guifg=#00FF00
 hi treeLink ctermfg=Cyan guifg=#00FFFF
 hi treeBookmarksHeader ctermfg=Yellow guifg=#FFFF00
 
+
 " vim: ts=2 sw=2
+
+

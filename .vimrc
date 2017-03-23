@@ -1,8 +1,9 @@
 " Customized vimrc file.
 "
 " Maintainer:  Marek Balint <mareq@balint.eu>
-" Last change: 2016 Oct 26
-"
+" Last change: 2016 Nov 09
+
+
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
@@ -236,13 +237,19 @@ nnoremap <silent> ,h :tabprev<CR>
 nnoremap <silent> ,l :tabnext<CR>
 " Map ,H and ,L keys to move current tab one position left/right
 nnoremap <silent> ,H :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> ,L :execute 'silent! tabmove ' . tabpagenr()<CR>
+nnoremap <silent> ,L :execute 'silent! tabmove ' . (tabpagenr()+1)<CR>
 " Map ,,k to open new tab
 nnoremap <silent> ,,k :tabnew<CR>
 " Map ,,j to close active tab
 nnoremap <silent> ,,j :tabclose<CR>
 " Map <CTRL-\> key to work as hijacked , key
 nnoremap <silent> <C-\> ,
+" Map ,,ml to merge-in the local version
+nnoremap <silent> ,,ml :diffget LOCAL<CR>
+" Map ,,mb to merge-in the base version
+nnoremap <silent> ,,mb :diffget BASE<CR>
+" Map ,,mr to merge-in the remote version
+nnoremap <silent> ,,mr :diffget REMOTE<CR>
 
 
 " BEHAVIOR
@@ -286,6 +293,16 @@ nnoremap ,/ :nohlsearch<CR>
 nnoremap <silent> ,! :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 " Map ,,cpp key to set file type to C++
 nnoremap <silent> ,,cpp :set filetype=cpp<CR>
+" Map ,,du key to update the diff
+nnoremap <silent> ,,du :diffupdate<CR>
+" Map ,,dk key to diff the current buffer
+nnoremap <silent> ,,dk :diffthis<CR>
+" Map ,,dj key to turn off diff for the current buffer
+nnoremap <silent> ,,dj :diffoff<CR>
+" Map ,,dw key to ignore whitespaces in diff
+nnoremap <silent> ,,dw :set diffopt+=iwhite<CR>
+" Map ,,dW key to not ignore whitespaces in diff
+nnoremap <silent> ,,dW :set diffopt-=iwhite<CR>
 " Map ,,hup key to source configuration file
 nnoremap <silent> ,,hup :source ~/.vimrc<CR>
 " Load filetype plugin for man pages (enable :Man and \K commands)
@@ -321,8 +338,8 @@ let g:bufExplorerShowUnlisted = 0
 let g:bufExplorerSortBy = "mru"
 " Split path and file name
 let g:bufExplorerSplitOutPathName = 1
-" Map key ,0 to show BufExplorer
-nnoremap <silent> ,0 :BufExplorer<CR>
+" Map key ,9 to show BufExplorer
+nnoremap <silent> ,9 :BufExplorer<CR>
 
 " TRINITY (#2347)
 " Map key <CTRL-W>t to toggle all three plugins
@@ -352,6 +369,8 @@ let g:Tlist_Auto_Open = 0
 let g:Tlist_Exit_OnlyWindow = 1
 " Display TagList on the right
 let g:Tlist_Use_Right_Window = 1
+" Set default widht of TagList window
+let g:Tlist_WinWidth = 60
 " Set focus to TagList window when opened
 let g:Tlist_GainFocus_On_ToggleOpen = 1
 " Close TagList window when a symbol is selected
@@ -503,6 +522,59 @@ let g:pdf_convert_on_edit = 1
 
 " FUGITIVE (#2975)
 
+" STARTIFY (https://github.com/mhinz/vim-startify)
+" Do not show Startify screen automatically at startup
+let g:startify_disable_at_vimenter = 1
+" Automatically load the session in the current directory
+let g:startify_session_autoload = 0
+" Automatically save current session before closing 
+let g:startify_session_persistence = 0
+" Delete open buffers before loading a new session
+let g:startify_session_delete_buffers = 1
+" When opening a file or bookmark, change to its directory
+let g:startify_change_to_dir = 1
+" Specify numer of files to list
+let g:startify_files_number = 10
+" Show relative filenames
+let g:startify_relative_path = 0
+" Filters for excluded recent files
+let g:startify_skiplist = [
+  \ 'COMMIT_EDITMSG',
+  \ ]
+" Show <empty buffer> and <quit> on Startify screen
+let g:startify_enable_special = 1
+" Customize lists shown on Startify screen (files, dir, bookmarks, sessions)
+let g:startify_list_order = [
+  \ ['   sessions'],
+  \ 'sessions',
+  \ ['   bookmarks'],
+  \ 'bookmarks',
+  \ ['   recent files (current directory)'],
+  \ 'dir',
+  \ ['   recent files (global)'],
+  \ 'files',
+  \ ]
+" Display custom header on Startify screen
+let g:startify_custom_header = map(split(system('tips | cowsay -f apt'), '\n'), '"   ". v:val') + ['']
+" Display custom footer on Startify screen
+let g:startify_custom_footer = ''
+" Display custom status line when opening Startify screen
+autocmd User Startified let &l:stl = 'Startify [b:same window] [s:split window] [v:vertical split window] [t:new tab]'
+" Prevent NERDTree to open a buffer in Startify window
+"autocmd User Startified setlocal buftype=
+" Specify bookmarks
+let g:startify_bookmarks = []
+" Map key ,0 to show Startify screen
+nnoremap <silent> ,0 :Startify<CR>
+" Map key ,ss to save the session
+nnoremap <silent> ,,ss :SSave<CR>
+" Map key ,sl to load the session
+nnoremap <silent> ,,sl :SLoad<CR>
+" Map key ,sc to close the session
+nnoremap <silent> ,,sc :SClose<CR>
+" Map key ,sd to load the session
+nnoremap <silent> ,,sd :SDelete<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                        LIST OF CUSTOM KEY BINDINGS                        "
@@ -534,7 +606,8 @@ let g:pdf_convert_on_edit = 1
 "   ,2          toggle TagList window
 "   ,@          show tag prototype
 "   ,3          toggle SourceExplorer
-"   ,0          show BufExplorer
+"   ,9          show BufExplorer
+"   ,0          show Startify screen
 
 "   ,,c         open new tab with terminal$
 "   ,,j         close current tab
@@ -545,7 +618,15 @@ let g:pdf_convert_on_edit = 1
 
 "   ,,cpp       set file type to C++
 "   ,,ctags     generate ctags
+"   ,,du        diff: update
+"   ,,dj        diff: off (:diffoff)
+"   ,,dk        diff: on (:diffthis)
+"   ,,dw        diff: ignore whitespaces
+"   ,,dW        diff: do not ignore whitespaces
 "   ,,hup       source configuration file
+"   ,,mb        merge: diffget base
+"   ,,ml        merge: diffget local
+"   ,,mr        merge: diffget remote
 "   ,,rs        run command in new horizontal buffer
 "   ,,rt        run command in new tab
 "   ,,rv        run command in new vertical buffer

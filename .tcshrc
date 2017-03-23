@@ -1,8 +1,14 @@
+" Customized vimrc file.
+"
+" Maintainer:  Marek Balint <mareq@balint.eu>
+" Last change: 2016 Oct 26
+
+
 # If we are actually started by as /bin/csh, I would 
 # prefer to know we are actually the tcsh
 if ($?SHELL) then
     if ($SHELL == "/bin/csh") then
-	setenv SHELL /bin/tcsh
+      setenv SHELL /bin/tcsh
     endif
 endif
 

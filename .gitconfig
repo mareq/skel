@@ -1,20 +1,38 @@
+; Customized gitconfig file.
+;
+; Maintainer:  Marek Balint <mareq@balint.eu>
+; Last change: 2017 Mar 23
+
+
 [user]
-	name = Mareq
-	email = mareq@balint.eu
+  name = Mareq
+  email = mareq@balint.eu
 [core]
-	editor = vim
-	autocrlf = false
+  editor = vim
+  autocrlf = false
 [diff]
   tool = vimdiff
 [pager]
-	diff =
+  diff =
 [merge]
-	tool = vimdiff
+  tool = vimdiff
+  conflictstyle = diff3
 [interactive]
-	singlekey = true
+  singlekey = true
 [push]
-	default = simple
+  ;default = simple
+  default = matching
 [alias]
-	unstage = reset --
-	dt = difftool
-	l = log --oneline
+  unstage = reset --
+  dt = difftool
+  mt = mergetool
+  l = log --oneline
+  lg = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit
+  llg = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit --all
+  lm = log --left-right --boundary --graph --merge --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit
+  llm = log --left-right --boundary --graph --merge --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit --all
+  fum = diff --name-only --diff-filter=U
+  ours = checkout --ours
+  theirs = checkout --theirs
+
+
