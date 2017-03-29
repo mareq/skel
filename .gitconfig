@@ -1,7 +1,7 @@
 ; Customized gitconfig file.
 ;
 ; Maintainer:  Marek Balint <mareq@balint.eu>
-; Last change: 2017 Mar 23
+; Last change: 2017 Mar 29
 
 
 [user]
@@ -28,7 +28,9 @@
   mt = mergetool
   l = log --oneline
   lg = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit
+  lgnc = log --graph --pretty=format:'%h -%d %s [%ci] <%ce>' --no-color --abbrev-commit
   llg = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit --all
+  llgnc = log --graph --pretty=format:'%h -%d %s [%ci] <%ce>' --no-color --abbrev-commit --all
   lm = log --left-right --boundary --graph --merge --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit
   llm = log --left-right --boundary --graph --merge --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit --all
   fum = diff --name-only --diff-filter=U
