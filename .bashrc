@@ -1,7 +1,7 @@
 # Customized bashrc file.
 #
 # Maintainer:  Marek Balint <mareq@balint.eu>
-# Last change: 2013 Aug 26
+# Last change: 2017 Mar 29
 
 
 # ~/.bashrc: executed by bash(1) for non-login shells.
@@ -64,9 +64,41 @@ if [ -n "$force_color_prompt" ]; then
   fi
 fi
 
+function timer_start {
+  timer=${timer:-$SECONDS}
+}
+
+function timer_stop {
+  timer=$(($SECONDS - $timer))
+
+  if [ "${timer}" -ge 3600 ]; then
+    timer_show=`printf "%02d:%02d:%02d" $((timer/3600)) $((timer%3600/60)) $((timer%60))`
+  elif [ "${timer}" -ge 60 ]; then
+    timer_show=`printf "%02d:%02d" $((timer/60)) $((timer%60))`
+  else
+    timer_show=`printf "%02d" $timer`
+  fi
+
+  unset timer
+
+
+  #timer_show=$(($SECONDS - $timer))
+  #unset timer
+}
+
+trap 'timer_start' DEBUG
+
+if [ "$PROMPT_COMMAND" == "" ]; then
+  PROMPT_COMMAND="timer_stop"
+elif [ "$PROMPT_COMMAND" == "timer_stop" ]; then
+  PROMPT_COMMAND="timer_stop"
+else
+  PROMPT_COMMAND="$PROMPT_COMMAND; timer_stop"
+fi
+
 if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[01;33m\]@\[\033[01;34m\]\h\[\033[31m\]:\[\033[01;33m\]$?\[\033[31m\]:\[\033[01;33m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u\[\033[01;33m\]@\[\033[01;34m\]\h\[\033[31m\]:\[\033[01;33m\]$?\[\033[31m\]:\[\033[01;33m\]${timer_show}\[\033[31m\]:\[\033[01;33m\]\w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
