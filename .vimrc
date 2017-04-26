@@ -1,7 +1,7 @@
 " Customized vimrc file.
 "
 " Maintainer:  Marek Balint <mareq@balint.eu>
-" Last change: 2016 Nov 09
+" Last change: 2017 Apr 26
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -506,13 +506,13 @@ let g:SuperTabMappingBackward = '<s-nul>'
 " SNIPMATE (#2540)
 
 " CONQUE (#2771)$
-" Map key ,,c to open new tab with terminal$
+" Map key ,,c to open new tab with terminal
 nnoremap <silent> ,,c :ConqueTermTab bash<CR>
-" Map key ,,rt to run command in new tab$
+" Map key ,,rt to run command in new tab
 nnoremap ,,rt :ConqueTermTab 
-" Map key ,,rs to run command in new horizontal buffer$
+" Map key ,,rs to run command in new horizontal buffer
 nnoremap ,,rs :ConqueTermSplit 
-" Map key ,,rv to run command in new vertical buffer$
+" Map key ,,rv to run command in new vertical buffer
 nnoremap ,,rv :ConqueTermVSplit 
 
 " OPEN-PDF (#4708)
@@ -572,8 +572,22 @@ nnoremap <silent> ,,ss :SSave<CR>
 nnoremap <silent> ,,sl :SLoad<CR>
 " Map key ,sc to close the session
 nnoremap <silent> ,,sc :SClose<CR>
-" Map key ,sd to load the session
+" Map key ,sd to delete the session
 nnoremap <silent> ,,sd :SDelete<CR>
+
+" VIM-REST-CONSOLE (#2975)
+" Allow GET requests to have body
+"   note: vrc_split_request_body is ignored (= 0) when this is set (= 1)
+let g:vrc_allow_get_request_body = 1
+" Enable automatic formatting of the response
+let g:vrc_auto_format_response_enabled = 1
+" Include response header
+let g:vrc_include_response_header = 1
+" Print executed curl command
+"   note: response formatting does not work when this is enabled (= 1)
+"let g:vrc_show_command = 1
+" Set trigger key (<C-j> by default)
+let g:vrc_trigger = ',,sr'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -630,6 +644,11 @@ nnoremap <silent> ,,sd :SDelete<CR>
 "   ,,rs        run command in new horizontal buffer
 "   ,,rt        run command in new tab
 "   ,,rv        run command in new vertical buffer
+"   ,,sc        close session
+"   ,,sd        delete session
+"   ,,sl        load session
+"   ,,sr        send request (vim-rest-console plugin)
+"   ,,ss        save session
 
 
 " vim: ts=2 sw=2 et
