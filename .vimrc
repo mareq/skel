@@ -1,7 +1,7 @@
 " Customized vimrc file.
 "
 " Maintainer:  Marek Balint <mareq@balint.eu>
-" Last change: 2017 Apr 26
+" Last change: 2017 May 07
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -256,13 +256,17 @@ nnoremap <silent> ,,mr :diffget REMOTE<CR>
 " Write backup file, then write changes and remove backup file
 set nobackup
 set writebackup
-" Turn off swap files
+" Write swap files to specific directory
 set directory^=$HOME/.vim/swp//
 " Use *.ci extension for CPP files
 au BufNewFile,BufRead *.ci setfiletype cpp
 " Use *.msg and *.inc extensions for XML files
 "au BufNewFile,BufRead *.msg setfiletype xml
 "au BufNewFile,BufRead *.inc setfiletype xml
+" Map § key to `
+nmap § `
+" Map ± key to ~
+nmap ± ~
 " Remap * key to *N
 nnoremap <silent> * *N
 " Remap * key (in visual mode) to search for selected text (forward)
@@ -361,6 +365,8 @@ nnoremap <silent> ,1 :NERDTreeToggle<CR>
 "nnoremap <silent> ,1 :TrinityToggleNERDTree<CR>
 " Map key ,` to find current file in NerdTree
 nnoremap <silent> ,` :NERDTreeFind<CR>
+" Map key ,§ to find current file in NerdTree
+nnoremap <silent> ,§ :NERDTreeFind<CR>
 
 " TAGLIST (#273)
 " Automatically open TagList window on startup
