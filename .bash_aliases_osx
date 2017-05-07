@@ -5,7 +5,6 @@
 
 
 export LS_OPTIONS='-G'
-eval "`dircolors`"
 alias ls='ls $LS_OPTIONS'
 alias ll='ls $LS_OPTIONS -al'
 alias l='ls $LS_OPTIONS -l'
