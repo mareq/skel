@@ -1,6 +1,6 @@
 " Vim color file
 " Maintainer: Marek Balint <mareq@balint.eu>
-" Last change: 2016 Nov 09
+" Last change: 2017 May 07
 
 " First remove all existing highlighting.
 set background=dark
@@ -13,7 +13,7 @@ endif
 let colors_name = "neon"
 
 " Normal text
-hi Normal ctermbg=DarkGray ctermfg=White guibg=#000000 guifg=#FFFFFF
+hi Normal ctermbg=black ctermfg=White guibg=#000000 guifg=#FFFFFF
 
 " Status line
 hi StatusLine term=reverse,bold cterm=reverse,bold ctermbg=LightGray ctermfg=DarkBlue gui=reverse,bold guibg=LightGray guifg=LightBlue
