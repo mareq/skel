@@ -1,7 +1,7 @@
 " Customized vimrc file.
 "
 " Maintainer:  Marek Balint <mareq@balint.eu>
-" Last change: 2017 May 07
+" Last change: 2017 Jun 14
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -590,8 +590,7 @@ let g:vrc_auto_format_response_enabled = 1
 " Include response header
 let g:vrc_include_response_header = 1
 " Print executed curl command
-"   note: response formatting does not work when this is enabled (= 1)
-"let g:vrc_show_command = 1
+let g:vrc_show_command = 1
 " Set trigger key (<C-j> by default)
 let g:vrc_trigger = ',,sr'
 
