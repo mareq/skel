@@ -1,7 +1,7 @@
 # Customized bash_aliases file.
 #
 # Maintainer:  Marek Balint <mareq@balint.eu>
-# Last change: 2016 Oct 26
+# Last change: 2017 Jun 25
 
 
 export LS_OPTIONS='--color=auto'
@@ -12,5 +12,6 @@ alias l='ls $LS_OPTIONS -l'
 alias cgrep='grep --color=always'
 alias cd..='cd ..'
 alias g11='g++ -std=c++11'
+alias run='docker run -it --rm --network=host -v $(pwd):/opt/work --workdir=/opt/work'
 
 
