@@ -1,0 +1,9 @@
+# Global gitignore file.
+#
+# Maintainer:  Marek Balint <mareq@balint.eu>
+# Last change: 2017 Jun 30
+
+# generic sandbox
+.sandbox
+
+

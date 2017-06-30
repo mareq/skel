@@ -1,0 +1,41 @@
+; Customized gitconfig file.
+;
+; Maintainer:  Marek Balint <mareq@balint.eu>
+; Last change: 2017 Jun 30
+
+
+[user]
+  name = mareq
+  email = mareq@balint.eu
+[core]
+  editor = vim
+  autocrlf = false
+  excludesfile = /Users/mq/.gitignore_global
+[diff]
+  tool = vimdiff
+[pager]
+  diff =
+[merge]
+  tool = vimdiff
+  conflictstyle = diff3
+[interactive]
+  singlekey = true
+[push]
+  ;default = simple
+  default = matching
+[alias]
+  unstage = reset --
+  dt = difftool
+  mt = mergetool
+  l = log --oneline
+  lg = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit
+  lgnc = log --graph --pretty=format:'%h -%d %s [%ci] <%ce>' --no-color --abbrev-commit
+  llg = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit --all
+  llgnc = log --graph --pretty=format:'%h -%d %s [%ci] <%ce>' --no-color --abbrev-commit --all
+  lm = log --left-right --boundary --graph --merge --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit
+  llm = log --left-right --boundary --graph --merge --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit --all
+  fum = diff --name-only --diff-filter=U
+  ours = checkout --ours
+  theirs = checkout --theirs
+
+

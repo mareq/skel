@@ -1,7 +1,7 @@
 ; Customized gitconfig file.
 ;
 ; Maintainer:  Marek Balint <mareq@balint.eu>
-; Last change: 2017 May 07
+; Last change: 2017 Jun 30
 
 
 [user]
@@ -10,6 +10,7 @@
 [core]
   editor = vim
   autocrlf = false
+  excludesfile = /home/mareq/.gitignore_global
 [diff]
   tool = vimdiff
 [pager]
