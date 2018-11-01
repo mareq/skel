@@ -39,7 +39,7 @@ hi Search term=reverse cterm=underline ctermbg=DarkBlue ctermfg=Yellow guibg=Gra
 hi ModeMsg term=bold cterm=bold gui=bold
 hi StatusLineNC term=reverse cterm=reverse gui=reverse
 hi VertSplit term=reverse cterm=reverse gui=reverse
-hi Visual term=reverse ctermbg=Yellow ctermfg=DarkBlue guibg=grey60
+hi Visual ctermbg=Yellow ctermfg=DarkBlue guibg=grey60
 hi VisualNOS term=underline,bold cterm=underline,bold gui=underline,bold
 hi DiffText term=reverse cterm=bold ctermbg=Red ctermfg=LightGray gui=bold guibg=Red
 hi Cursor guibg=Green guifg=Black

@@ -2,11 +2,14 @@
 #
 # Maintainer: Marek Balint <mareq@balint.eu>
 # Original source: Pádraig Brady (http://www.pixelbeat.org/settings/.screenrc)
-# Last change: 2017 May 18
+# Last change: 2018 Nov 01
 
 
 # Remap escape key to C-\
 #escape ^\\
+
+# Remap escape key to C-S
+escape ^Ss
 
 # Set $TERM
 term xterm-color
@@ -17,10 +20,12 @@ startup_message off
 # Set the default size of scrollback buffer
 defscrollback 65536
 
-# Status bar
-hardstatus on
-hardstatus alwayslastline
-hardstatus string "%{.kB} %-w%{..W}%n %t%{-}%+W%=[%u@%H:%S] [%l] [%D] [%0d.%0m.%Y] [%0c:%0s] "
+# Status bar: on
+#hardstatus on
+#hardstatus lastline
+#hardstatus string "%{.kB} %-w%{..W}%n %t%{-}%+W%=[%u@%H:%S] [%l] [%D] [%0d.%0m.%Y] [%0c:%0s] "
+# Status bar: off
+hardstatus off
 
 # Don't block command output if the terminal stops responding
 # (like if the ssh connection times out for example).

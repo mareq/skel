@@ -1,7 +1,7 @@
 " Customized vimrc file.
 "
 " Maintainer:  Marek Balint <mareq@balint.eu>
-" Last change: 2017 Jun 14
+" Last change: 2018 Nov 01
 
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -250,6 +250,15 @@ nnoremap <silent> ,,ml :diffget LOCAL<CR>
 nnoremap <silent> ,,mb :diffget BASE<CR>
 " Map ,,mr to merge-in the remote version
 nnoremap <silent> ,,mr :diffget REMOTE<CR>
+" Map ,,rf to format the Rust file (using user-specific configuration)
+com! FormatRustUser %!rustfmt --config-path=$HOME/.rustfmt.toml
+nnoremap <silent> ,,rf :FormatRustUser<CR>:set filetype=rust<CR>
+" Map ,,rr to format the Rust file (using default configuration)
+com! FormatRustDefault %!cd %:p:h && rustfmt
+nnoremap <silent> ,,rr :FormatRustDefault<CR>:set filetype=rust<CR>
+" Map ,,js to format the JSON file
+com! FormatJson %!python -m json.tool
+nnoremap <silent> ,,js :FormatJson<CR>:%s/    /  /g<CR>:nohlsearch<CR>:set filetype=json<CR>
 
 
 " BEHAVIOR
@@ -258,11 +267,20 @@ set nobackup
 set writebackup
 " Write swap files to specific directory
 set directory^=$HOME/.vim/swp//
+" Turn off the annoying bell
+set visualbell t_vb=
 " Use *.ci extension for CPP files
 au BufNewFile,BufRead *.ci setfiletype cpp
+" Use *.rs extension for Rust files
+au BufNewFile,BufRead *.rs setlocal filetype=rust
+" Use *.ts extension for typescript files
+"au BufNewFile,BufRead *.ts setfiletype javascript
+au BufNewFile,BufRead *.ts setlocal filetype=javascript
 " Use *.msg and *.inc extensions for XML files
 "au BufNewFile,BufRead *.msg setfiletype xml
 "au BufNewFile,BufRead *.inc setfiletype xml
+" have :! shell behave like command prompt
+"set shellcmdflag=-ic
 " Map § key to `
 nmap § `
 " Map ± key to ~
@@ -288,7 +306,7 @@ nnoremap <silent> ,,q :qall<CR>
 " Map ,r key to refresh current buffer
 nnoremap <silent> ,r :edit<CR>
 " Map ,R key to refresh all buffers on all tabsd
-nnoremap <silent> ,R :tabdo exec 'windo edit'<CR>
+nnoremap <silent> ,R :tabdo exec 'windo edit!'<CR>
 " Map ,s key to toggle swap files
 nnoremap <silent> ,s :set invswapfile swapfile?<CR>
 " Map ,/ key to switch off highlighting the last used search pattern
@@ -311,6 +329,8 @@ nnoremap <silent> ,,dW :set diffopt-=iwhite<CR>
 nnoremap <silent> ,,hup :source ~/.vimrc<CR>
 " Load filetype plugin for man pages (enable :Man and \K commands)
 runtime! ftplugin/man.vim
+" Map ,,, key to the original meaning of ,
+nnoremap <silent> ,,, ,
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -367,6 +387,10 @@ nnoremap <silent> ,1 :NERDTreeToggle<CR>
 nnoremap <silent> ,` :NERDTreeFind<CR>
 " Map key ,§ to find current file in NerdTree
 nnoremap <silent> ,§ :NERDTreeFind<CR>
+
+" NERD-COMMENTER (#1218)
+" Use extra space around comment delimiters
+let NERDSpaceDelims = 1
 
 " TAGLIST (#273)
 " Automatically open TagList window on startup
@@ -594,6 +618,33 @@ let g:vrc_show_command = 1
 " Set trigger key (<C-j> by default)
 let g:vrc_trigger = ',,sr'
 
+" UNDOTREE (https://github.com/mbbill/undotree)
+" Map key ,8 to toggle Undotree window
+nnoremap <silent> ,8 :UndotreeToggle<CR>
+" Set window layout
+let g:undotree_WindowLayout = 4
+" Use short time indicators ('d' instead of 'days')
+let g:undotree_ShortIndicators = 1
+" Undotree window width
+let g:undotree_SplitWidth = 24
+" Diff window height
+let g:undotree_DiffpanelHeight = 10
+" Set focus to Undotree window on opening it
+let g:undotree_SetFocusWhenToggle = 1
+" Tree node shape
+let g:undotree_TreeNodeShape = '*'
+" Diff command
+let g:undotree_DiffCommand = "diff"
+" Highlight changed texgt
+let g:undotree_HighlightChangedText = 1
+" Show help line
+let g:undotree_HelpLine = 1
+" Persist undo history
+if has("persistent_undo")
+  set undodir=~$HOME/.vim/undo//
+  set undofile
+endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                        LIST OF CUSTOM KEY BINDINGS                        "
@@ -623,6 +674,7 @@ let g:vrc_trigger = ',,sr'
 "   ,`          find current file in NerdTree
 "   ,1          show NerdTree
 "   ,2          toggle TagList window
+"   ,8          toggle Undotree window
 "   ,@          show tag prototype
 "   ,3          toggle SourceExplorer
 "   ,9          show BufExplorer
@@ -643,9 +695,12 @@ let g:vrc_trigger = ',,sr'
 "   ,,dw        diff: ignore whitespaces
 "   ,,dW        diff: do not ignore whitespaces
 "   ,,hup       source configuration file
+"   ,,js        format the JSON file
 "   ,,mb        merge: diffget base
 "   ,,ml        merge: diffget local
 "   ,,mr        merge: diffget remote
+"   ,,rf        format the Rust file using user-specific configuration
+"   ,,rr        format the Rust file using default configuration
 "   ,,rs        run command in new horizontal buffer
 "   ,,rt        run command in new tab
 "   ,,rv        run command in new vertical buffer
@@ -655,6 +710,13 @@ let g:vrc_trigger = ',,sr'
 "   ,,sr        send request (vim-rest-console plugin)
 "   ,,ss        save session
 
+" quote all unquoted words in double-quotes
+" %s/['"a-zA-Z0-9_.-]\@<!\([a-zA-Z0-9_.-]\+\)/"\1"/gc
+" quote all single-quoted words in double-quotes
+" %s/'\([a-zA-Z0-9_.-]\+\)'/"\1"/gc
+" repair quotes on '{{"elastic_query_parameter"}}'
+" (this should is just consequence of those previous two regexes being not exactly correct)
+" %s/'{{"\([a-z-A-Z0-9_]\+\)"}}'/"{{\1}}\"/gc
 
 " vim: ts=2 sw=2 et
 

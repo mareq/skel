@@ -1,0 +1,139 @@
+# Customized tmuxrc file.
+# # Maintainer: Marek Balint <mareq@balint.eu>
+# Inspired by:
+# - https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
+# - https://sanctum.geek.nz/arabesque/vi-mode-in-tmux/
+# ToDo:
+# - https://superuser.com/questions/891915/interactive-search-of-tmux-sessions
+# Last change: 2018 May 18
+
+# Unbind unwanted default key bindings
+unbind-key -T prefix l
+
+# Reload config file
+bind-key -T prefix r source-file ~/.tmux.conf
+
+# Remap escape key to C-\
+# (both 'C-\' and "C-\\" work; see: https://superuser.com/a/417505)
+#unbind-key -T prefix C-b
+#set-option -g prefix 'C-\'
+#bind-key -T prefix 'C-\' last-window #send-prefix
+
+# Remap escape key to C-a
+unbind-key -T prefix C-b
+set-option -g prefix C-a
+bind-key -T prefix C-a last-window #send-prefix
+
+# Prevent accidental Ctrl-D
+#set-environment -g 'IGNOREEOF' 1
+
+# Set the default size of scrollback buffer
+set-option -g history-limit 65536
+bind-key -T prefix C-L clear-history
+
+# 0 is too far from ` ;)
+#set -g base-index 1
+
+# Enable mouse mode (tmux >=v2.1)
+set -g mouse on
+
+# Bells
+set-option -g visual-activity off
+set-option -g visual-bell off
+set-option -g visual-silence off
+set-window-option -g monitor-activity off
+set-option -g bell-action none
+
+# Use vi-mode
+set-option -g status-keys vi
+set-window-option -g mode-keys vi
+unbind-key -T root Escape
+unbind-key -T root C-]
+bind-key -T prefix [ copy-mode
+bind-key -T prefix C-[ copy-mode
+unbind-key -T copy-mode-vi C-Space
+unbind-key -T copy-mode-vi Space
+bind-key -T copy-mode-vi 'v' send -X begin-selection
+bind-key -T copy-mode-vi 'y' send -X copy-selection-and-cancel
+bind-key -T copy-mode-vi 'Y' send -X copy-selection
+bind-key -T copy-mode-vi C-[ send-keys -X cancel
+bind-key -T prefix ] paste-buffer
+bind-key -T prefix C-] paste-buffer
+#bind-key -T vi-copy 'v' begin-selection # tmux <=v2.3
+#bind-key -T vi-copy 'y' copy-selection # tmux <=v2.3
+set-window-option -g mode-attr bold
+set-window-option -g mode-fg colour57
+set-window-option -g mode-bg colour248
+
+# Handling X-clipboard
+bind-key -T prefix P run "tmux show-buffer | xsel --clipboard --input"
+bind-key -T prefix Y run "tmux set-buffer \"$(xsel --clipboard --output)\""
+#bind-key -T prefix P run "tmux show-buffer | pbcopy"
+#bind-key -T prefix Y run "tmux set-buffer \"$(pbpaste)\""
+
+# Window switching
+bind-key -T prefix C-b swap-window -t -1
+bind-key -T prefix C-f swap-window -t +1
+
+# Hacks for fast-typing (not depressing Ctrl key soon enough)
+set -sg escape-time 5
+bind-key -T prefix C-n next-window
+bind-key -T prefix C-p previous-window
+
+# 256-color terminal by default
+# colors: https://superuser.com/a/1104214
+#set -g default-terminal "screen-256color"
+set -g default-terminal "xterm-color"
+
+# Status line
+set -g status-interval 1
+set -g status-left ''
+set -g status-left-length 0
+set -g status-right '#[fg=brightblue,bold][#(whoami)@#H:#S] [#(uptime | rev | cut -d":" -f1 | rev | sed "s/,//g" | sed "s/^ //g")] [%a] [%d.%m.%Y] [%H:%M:%S]'
+set -g status-right-length 100
+set -g status-justify left
+set -g status-bg black
+set -g status-fg blue
+
+# Windows
+set-window-option -g window-status-format " #I #W"
+set-window-option -g window-status-current-format " #I #W"
+set-window-option -g window-status-fg brightblue
+set-window-option -g window-status-current-fg brightwhite
+set-window-option -g window-status-attr none
+set-option -g allow-rename off
+set-option -g automatic-rename off
+
+# Panes
+#bind-key -T prefix v split-window -h
+#bind-key -T prefix s split-window -v
+bind-key -T prefix h select-pane -L
+bind-key -T prefix l select-pane -R
+bind-key -T prefix k select-pane -U
+bind-key -T prefix j select-pane -D
+bind-key -T prefix C-h select-pane -L
+bind-key -T prefix C-l select-pane -R
+bind-key -T prefix C-k select-pane -U
+bind-key -T prefix C-j select-pane -D
+bind-key -T prefix J command-prompt "resize-pane -D '%%'"
+bind-key -T prefix K command-prompt "resize-pane -U '%%'"
+bind-key -T prefix H command-prompt "resize-pane -L '%%'"
+bind-key -T prefix L command-prompt "resize-pane -R '%%'"
+set -g pane-border-fg colour238
+set -g pane-active-border-fg blue
+
+# Messaging
+set -g message-fg brightwhite
+set -g message-bg blue
+set -g message-command-fg brightwhite
+set -g message-command-bg blue
+
+# Plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
+
+
