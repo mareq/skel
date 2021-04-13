@@ -1,0 +1,119 @@
+#!/usr/bin/env bash
+
+#set -e
+#set -x
+
+
+DISK_RC_PATH_BASE="${HOME}/.config/disks"
+DISK_ID="${DISK_ID:-"${1}"}"
+DISK_RC="${DISK_RC:-"${DISK_RC_PATH_BASE}/${DISK_ID}.rc"}"
+
+# disk configuration
+source "${DISK_RC}" &> /dev/null
+if [ ${?} != 0 ]; then
+  #              1         2         3         4         5         6         7         8
+  #     12345678901234567890123456789012345678901234567890123456789012345678901234567890
+  echo "${0}: Error: Missing disk configuration."
+  echo
+  echo "  Hint: The disk configuration is read from the RC file. The RC file itself"
+  echo "        is being looked for at these locations:"
+  echo "        - path stored in the \$DISK_RC variable:"
+  echo "            DISK_RC='<path-to-rc-file>' ${0}"
+  echo "        - path constructed using the disk ID:"
+  echo "        -   ${DISK_RC_PATH_BASE}/\<disk-id\>.rc"
+  echo
+  echo "  Hint: The disk ID is being looked for at these locations:"
+  echo "        - value stored in the \$DISK_ID variable:"
+  echo "            DISK_ID='<disk-id>' ${0}"
+  echo "        - the first command-line argument to this script:"
+  echo "            ${0} <disk-id>"
+  echo
+  exit 1
+fi
+
+# get general configuration
+MOUNT_USER="${MOUNT_USER:-$(id -u)}"
+MOUNT_GROUP="${MOUNT_GROUP:-$(id -u)}"
+#echo "${0}: Debug: user=\`${MOUNT_USER}\` group=\`${MOUNT_GROUP}\`"
+
+# process all defined partitions
+# TODO: This big chunk of code is duplicated in mount/umount scripts - need to refactor.
+MOUNT_POINTS=()
+for PARTITION in ${PARTITIONS[@]}; do
+  # get the configuration (all types: type, mount point, disk device)
+  TYPE_VAR="${PARTITION}_TYPE"
+  TYPE="${!TYPE_VAR}"
+  if [ "x${TYPE}" = "x" ]; then
+    echo "${0}: Error: Partition \`${PARTITION}\`: Partition type not specified"
+    exit 1
+  fi
+  MOUNT_POINT_VAR="${PARTITION}_MOUNT_POINT"
+  MOUNT_POINT="${!MOUNT_POINT_VAR}"
+  if [ "x${MOUNT_POINT}" = "x" ]; then
+    echo "${0}: Error: Partition \`${PARTITION}\`: Mount point not specified"
+    exit 1
+  fi
+  DEVICE_VAR="${PARTITION}_DEVICE"
+  DEVICE="${!DEVICE_VAR}"
+  if [ "x${DEVICE}" = "x" ]; then
+    echo "${0}: Error: Partition \`${PARTITION}\`: Device not specified"
+    exit 1
+  fi
+
+  # get the configuration (luks: mapping name, password identifier)
+  if [ "${TYPE}" = "LUKS" ]; then
+    LUKS_NAME_VAR="${PARTITION}_LUKS_NAME"
+    LUKS_NAME="${!LUKS_NAME_VAR}"
+    LUKS_NAME="${LUKS_NAME:-"$(basename "${DEVICE}")"}"
+    PASS_ID_VAR="${PARTITION}_PASS_ID"
+    PASS_ID="${!PASS_ID_VAR}"
+    if [ "x${PASS_ID}" = "x" ]; then
+      echo "${0}: Error: Partition \`${PARTITION}\`: Password ID for the partition not specified"
+      exit 1
+    fi
+  fi
+
+  MOUNT_SOURCE=""
+  case ${TYPE} in
+    "PLAIN")
+      # nothing special for plain device
+      #echo "${0}: Debug: Partition: \`${PARTITION}\`: type=\`${TYPE}\` mount point=\`${MOUNT_POINT}\` device=\`${DEVICE}\`"
+      MOUNT_SOURCE="${DEVICE}"
+      ;;
+    "LUKS")
+      # open LUKS device if needed
+      #echo "${0}: Debug: Partition: \`${PARTITION}\`: type=\`${TYPE}\` mount point=\`${MOUNT_POINT}\` device=\`${DEVICE}\` pass_id=\`${PASS_ID}\`"
+      su "${MOUNT_USER}" --command "pass ${PASS_ID}" | tr --delete '\n' | cryptsetup open --type luks "${DEVICE}" "${LUKS_NAME}" --key-file -
+      if [ ${?} != 0 ]; then
+        echo "${0}: Error: Partition \`${PARTITION}\`: Unable to create LUKS mapping"
+        continue
+      fi
+      MOUNT_SOURCE="/dev/mapper/${LUKS_NAME}"
+      ;;
+    *)
+      echo "${0}: Error: Partition \`${PARTITION}\`: Invalid partition type: \`${TYPE}\`"
+      continue
+      ;;
+  esac
+
+  #echo "${0}: Debug: Partition: \`${PARTITION}\`: Mount: \`${MOUNT_SOURCE}\` -> \`${MOUNT_POINT}\`"
+  mount "${MOUNT_SOURCE}" "${MOUNT_POINT}"
+  if [ ${?} != 0 ]; then
+    echo "${0}: Error: Partition \`${PARTITION}\`: Unable to mount"
+    continue
+  fi
+  chown "${MOUNT_USER}:${MOUNT_GROUP}" "${MOUNT_POINT}"
+  if [ ${?} != 0 ]; then
+    echo "${0}: Error: Partition \`${PARTITION}\`: Unable to set owner"
+  fi
+  MOUNT_POINTS+=("${MOUNT_POINT}")
+done
+
+for ((i=0;i<${#PARTITIONS[@]};i++)); do
+  echo "${0}: Info: Partition \`${PARTITIONS[$i]}\` mounted: \`$(cat /proc/mounts | awk '$2=="'"${MOUNT_POINTS[$i]}"'"')\`"
+done
+
+
+# vim: set ts=2 sw=2 et:
+
+

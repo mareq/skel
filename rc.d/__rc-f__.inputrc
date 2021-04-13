@@ -1,0 +1,44 @@
+# Customized inputrc file.
+#
+# Maintainer: Marek Balint <mareq@balint.eu>
+# Last change: 2014 Mar 24
+
+
+$include /etc/inputrc
+
+set editing-mode vi
+
+$if mode=vi
+  # command mode
+  set keymap vi-command
+    "\C-p": history-search-backward
+    "\eOA": history-search-backward
+    "\e[A": history-search-backward
+    "-": history-search-backward
+    "k": history-search-backward
+
+    "\C-n": history-search-forward
+    "\eOB": history-search-forward
+    "\e[B": history-search-forward
+    "+": history-search-forward
+    "j": history-search-forward
+
+    "\C-l": clear-screen
+
+    "\C-x\C-r": re-read-init-file
+  # insert mode
+  set keymap vi-insert
+    "\C-p": history-search-backward
+    "\eOA": history-search-backward
+    "\e[A": history-search-backward
+
+    "\C-n": history-search-forward
+    "\eOB": history-search-forward
+    "\e[B": history-search-forward
+
+    "\C-l": clear-screen
+
+    "\C-x\C-r": re-read-init-file
+$endif
+
+

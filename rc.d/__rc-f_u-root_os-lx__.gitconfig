@@ -1,0 +1,56 @@
+; Customized gitconfig file.
+;
+; Maintainer:  Marek Balint <mareq@balint.eu>
+; Last change: 2021 Apr 08
+
+
+[user]
+  name = root
+  email = root@balint.eu
+[core]
+  editor = vim
+  ;pager = less -+$LESS -FRX
+  ;pager = cat
+  autocrlf = false
+  excludesfile = /root/.gitignore_global
+[diff]
+  tool = vimdiff
+  submodule = log
+[merge]
+  tool = vimdiff
+  ;conflictstyle = diff3
+[pull]
+  ff = only
+[commit]
+   gpgSign = true
+[push]
+  ;default = simple
+  default = matching
+[submodule]
+  recurse = true
+[interactive]
+  singlekey = true
+[alias]
+  unstage = reset --
+  dt = difftool
+  mt = mergetool
+  l = log --oneline
+  lg = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce> %C(bold red)[%G?:%GS]%Creset' --abbrev-commit
+  lg8 = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce> %C(bold red)[%G?:%GS]%Creset' --abbrev-commit -n8
+  lgnc = log --graph --pretty=format:'%h -%d %s [%ai] <%ae> [%ci] <%ce> [%G?:%GS]' --no-color --abbrev-commit
+  llg = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce> %C(bold red)[%G?:%GS]%Creset' --abbrev-commit --all
+  llgnc = log --graph --pretty=format:'%h -%d %s [%ai] <%ae> [%ci] <%ce> [%G?:%GS]' --no-color --abbrev-commit --all
+  lm = log --left-right --boundary --graph --merge --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit
+  llm = log --left-right --boundary --graph --merge --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit --all
+  fum = diff --name-only --diff-filter=U
+  ours = checkout --ours
+  theirs = checkout --theirs
+  sdiff = !git diff && git submodule foreach 'git diff'
+  spush = push --recurse-submodules=check
+  repair-dates = filter-branch --env-filter 'GIT_COMMITTER_DATE=$GIT_AUTHOR_DATE; export GIT_COMMITTER_DATE'
+  ls-branches-gone = !git fetch -p && git branch -vv | grep ': gone' | awk '{print $1}'
+
+
+; vim: ts=2 sw=2 et
+
+

@@ -1,0 +1,17 @@
+# Custom condarc file.
+#
+# Maintainer:  Marek Balint <mareq@balint.eu>
+# Last change: 2021 Apr 08
+
+changeps1: false
+auto_activate_base: false
+
+channels:
+  - r
+  - bioconda
+  - conda-forge
+  - defaults
+
+# vim: ts=2 sw=2 et
+
+

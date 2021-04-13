@@ -1,0 +1,6 @@
+[ $(command -v kubectl >/dev/null 2>&1) ] && source <(kubectl completion bash)
+
+
+# vim: ts=2 sw=2 et
+
+

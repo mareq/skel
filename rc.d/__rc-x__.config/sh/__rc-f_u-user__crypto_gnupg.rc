@@ -1,0 +1,6 @@
+[ -r "${HOME}/.gnupg/user-config.d/ssh" ] && source "${HOME}/.gnupg/user-config.d/ssh"
+
+
+# vim: ts=2 sw=2 et
+
+

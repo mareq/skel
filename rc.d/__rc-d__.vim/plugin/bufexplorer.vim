@@ -1,0 +1,1 @@
+../../__rc-x__.local/share/__rc-d__pathogen_bundle_available/bufexplorer.vim

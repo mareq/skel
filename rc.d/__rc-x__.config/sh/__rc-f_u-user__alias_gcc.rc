@@ -1,0 +1,16 @@
+# shorthand aliases
+export GPP_OPTIONS='-Wall -Wextra -pedantic -Werror'
+alias g98="g++ -std=c++98 ${GPP_OPITONS}"
+alias g03="g++ -std=c++03 ${GPP_OPITONS}"
+alias g11="g++ -std=c++11 ${GPP_OPITONS}"
+alias g14="g++ -std=c++14 ${GPP_OPITONS}"
+alias g17="g++ -std=c++17 ${GPP_OPITONS}"
+alias g2a="g++ -std=c++2a ${GPP_OPITONS}"
+
+# colored GCC warnings and errors
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+
+# vim: ts=2 sw=2 et
+
+

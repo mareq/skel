@@ -1,0 +1,22 @@
+# overwrite this one from oh-my-zsh common-aliases plugin
+alias l='ls -ClF'
+
+# give me a break about that space
+alias cd..='cd ..'
+
+# fast track (eight is already insane, so should be enough)
+alias cd...='cd ../..'                          # 2
+alias cd....='cd ../../..'                      # 3
+alias cd.....='cd ../../../..'                  # 4
+alias cd......='cd ../../../../..'              # 5
+alias cd.......='cd ../../../../../..'          # 6
+alias cd........='cd ../../../../../../..'      # 7
+alias cd.........='cd ../../../../../../../..'  # 8
+
+# NERDTree plugin is just great (TBH, even vim's built-in thing is pretty good on itself)
+alias dir='vim .'
+
+
+# vim: ts=2 sw=2 et
+
+

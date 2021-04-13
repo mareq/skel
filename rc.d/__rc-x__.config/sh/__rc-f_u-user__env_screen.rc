@@ -1,0 +1,15 @@
+# Hack-in 256 colors for `screen` running inside `tmux`:
+# - `xterm` sets `TERM='xterm-256color'`
+# - `tmux` ran from that `xterm` sets `TERM='screen-256color'` 
+# - `screen` ran from that `tmux` would set `TERM='screen'` -> colors are gone
+# however:
+# - `xterm` sets `TERM='xterm-256color'`
+# - `tmux` ran from that `xterm` sets `TERM='screen-256color'` 
+# - `screen` alias overwrites that to `TERM='xterm-256color'`
+# - `screen` ran from `tmux` using that alias will happily set `TERM='screen.xterm-256color'` -> colors are back
+alias screen="TERM=$(echo \"${TERM}\" | sed 's/screen-/xterm-/') screen"
+
+
+# vim: ts=2 sw=2 et
+
+
