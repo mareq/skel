@@ -134,3 +134,7 @@
 	path = rc.d/__rc-d__.tmux/plugins/tpm
 	url = https://github.com/mareq/tpm
 	branch = skel
+[submodule "rc.d/__rc-x__.local/share/fonts/__rc-d_u-user__NerdFonts"]
+	path = rc.d/__rc-x__.local/share/fonts/__rc-d_u-user__NerdFonts
+	url = https://github.com/mareq/nerd-fonts-meslo.git
+	branch = skel
