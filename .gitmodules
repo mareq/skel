@@ -138,3 +138,7 @@
 	path = rc.d/__rc-x__.local/share/fonts/__rc-d_u-user__NerdFonts
 	url = https://github.com/mareq/nerd-fonts-meslo.git
 	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d_u-user__nvm"]
+	path = rc.d/__rc-x__.local/share/__rc-d_u-user__nvm
+	url = https://github.com/mareq/nvm.git
+	branch = skel
