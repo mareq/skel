@@ -1,0 +1,4 @@
+[submodule "rc.d/__rc-x__.local/share/__rc-d_u-user__oh-my-zsh"]
+	path = rc.d/__rc-x__.local/share/__rc-d_u-user__oh-my-zsh
+	url = https://github.com/mareq/ohmyzsh.git
+	branch = skel
