@@ -122,3 +122,15 @@
 	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vimwiki
 	url = https://github.com/mareq/vimwiki
 	branch = skel
+[submodule "rc.d/__rc-d__.tmux/plugins/tmux-resurrect"]
+	path = rc.d/__rc-d__.tmux/plugins/tmux-resurrect
+	url = https://github.com/mareq/tmux-resurrect
+	branch = skel
+[submodule "rc.d/__rc-d__.tmux/plugins/tmux-sensible"]
+	path = rc.d/__rc-d__.tmux/plugins/tmux-sensible
+	url = https://github.com/mareq/tmux-sensible
+	branch = skel
+[submodule "rc.d/__rc-d__.tmux/plugins/tpm"]
+	path = rc.d/__rc-d__.tmux/plugins/tpm
+	url = https://github.com/mareq/tpm
+	branch = skel
