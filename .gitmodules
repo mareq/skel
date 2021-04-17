@@ -2,3 +2,123 @@
 	path = rc.d/__rc-x__.local/share/__rc-d_u-user__oh-my-zsh
 	url = https://github.com/mareq/ohmyzsh.git
 	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen
+	url = https://github.com/mareq/vim-pathogen
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/ale"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/ale
+	url = https://github.com/mareq/ale.git
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/bufexplorer"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/bufexplorer
+	url = https://github.com/mareq/bufexplorer.git
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/calendar"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/calendar
+	url = https://github.com/mareq/calendar.vim.git
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/coc"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/coc
+	url = https://github.com/mareq/coc.nvim.git
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/nerdcommenter"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/nerdcommenter
+	url = https://github.com/mareq/nerdcommenter.git
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/nerdtree"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/nerdtree
+	url = https://github.com/mareq/nerdtree.git
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/nerdtree-git-plugin"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/nerdtree-git-plugin
+	url = https://github.com/mareq/nerdtree-git-plugin.git
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/nvim-lspconfig"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/nvim-lspconfig
+	url = https://github.com/mareq/nvim-lspconfig.git
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/presenting"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/presenting
+	url = https://github.com/mareq/presenting.vim
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/rainbow"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/rainbow
+	url = https://github.com/mareq/rainbow
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/rust"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/rust
+	url = https://github.com/mareq/rust.vim
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/syntastic"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/syntastic
+	url = https://github.com/mareq/syntastic
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/taboo"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/taboo
+	url = https://github.com/mareq/taboo.vim
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/tagbar"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/tagbar
+	url = https://github.com/mareq/tagbar
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/taskwiki"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/taskwiki
+	url = https://github.com/mareq/taskwiki
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/undotree"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/undotree
+	url = https://github.com/mareq/undotree
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-airline"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-airline
+	url = https://github.com/mareq/vim-airline
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-airline-themes"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-airline-themes
+	url = https://github.com/mareq/vim-airline-themes
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-devicons"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-devicons
+	url = https://github.com/mareq/vim-devicons
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-DrawIt"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-DrawIt
+	url = https://github.com/mareq/vim-DrawIt
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-fugitive"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-fugitive
+	url = https://github.com/mareq/vim-fugitive
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-gitgutter"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-gitgutter
+	url = https://github.com/mareq/vim-gitgutter
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-json"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-json
+	url = https://github.com/mareq/vim-json
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-prettier"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-prettier
+	url = https://github.com/mareq/vim-prettier
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-rest-console"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-rest-console
+	url = https://github.com/mareq/vim-rest-console
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vimspector"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vimspector
+	url = https://github.com/mareq/vimspector
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-startify"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-startify
+	url = https://github.com/mareq/vim-startify
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-taskwarrior"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-taskwarrior
+	url = https://github.com/mareq/vim-taskwarrior
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vimwiki"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vimwiki
+	url = https://github.com/mareq/vimwiki
+	branch = skel
