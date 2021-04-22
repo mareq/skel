@@ -6,6 +6,9 @@
 # generic sandbox
 .sandbox
 
+# dotenv zsh plugin
+.env
+
 node_modules/
 dist/
 
