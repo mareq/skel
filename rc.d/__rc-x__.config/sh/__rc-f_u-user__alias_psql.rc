@@ -1,0 +1,6 @@
+alias psql-local='psql postgres://postgres:postgres@localhost:5432/postgres'
+
+
+# vim: ts=2 sw=2 et
+
+
