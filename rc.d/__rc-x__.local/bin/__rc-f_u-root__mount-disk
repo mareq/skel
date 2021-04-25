@@ -83,7 +83,11 @@ for PARTITION in ${PARTITIONS[@]}; do
     "LUKS")
       # open LUKS device if needed
       #echo "${0}: Debug: Partition: \`${PARTITION}\`: type=\`${TYPE}\` mount point=\`${MOUNT_POINT}\` device=\`${DEVICE}\` pass_id=\`${PASS_ID}\`"
-      su "${MOUNT_USER}" --command "pass ${PASS_ID}" | tr --delete '\n' | cryptsetup open --type luks "${DEVICE}" "${LUKS_NAME}" --key-file -
+      if [ "${PASS_ID}" == "--" ]; then
+        cryptsetup open --type luks "${DEVICE}" "${LUKS_NAME}"
+      else
+        su "${MOUNT_USER}" --command "pass ${PASS_ID}" | tr --delete '\n' | cryptsetup open --type luks "${DEVICE}" "${LUKS_NAME}" --key-file -
+      fi
       if [ ${?} != 0 ]; then
         echo "${0}: Error: Partition \`${PARTITION}\`: Unable to create LUKS mapping"
         continue
