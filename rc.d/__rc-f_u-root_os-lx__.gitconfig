@@ -21,8 +21,8 @@
   ;conflictstyle = diff3
 [pull]
   ff = only
-[commit]
-   gpgSign = true
+;[commit]
+;   gpgSign = true
 [push]
   ;default = simple
   default = matching
