@@ -1,4 +1,5 @@
 " Vim color file
+"
 " Maintainer: Marek Balint <mareq@balint.eu>
 " Last change: 2021 Apr 12
 
