@@ -827,12 +827,12 @@ let s:PluginCoCHighlightGroups = [
   \{
     \ 'group': 'CoCHintSign',
     \ 'descr': 'XXX: This is used not only for hint sign, but also for virtual-text with type hints: need s:DefaultColor for background for those hints, but should have s:Black.medium for hint sign (breaking background color of hint sign is lesser evil as that icon is just one character and is not as abundant as type hints).',
-    \ 'term': 'bold',    'cterm': 'bold',    'fg': s:Green.light, 'bg': s:DefaultColor,
+    \ 'term': 'bold',    'cterm': 'bold',    'fg': s:Black.light, 'bg': s:DefaultColor,
   \},
   \{
     \ 'group': 'CoCCodeLens',
     \ 'descr': '',
-    \ 'term': 'bold',    'cterm': 'bold',    'fg': s:White.medium, 'bg': s:DefaultColor,
+    \ 'term': 'bold',    'cterm': 'bold',    'fg': s:Black.light, 'bg': s:DefaultColor,
   \},
   \{
     \ 'group': 'CoCHighlightText',
