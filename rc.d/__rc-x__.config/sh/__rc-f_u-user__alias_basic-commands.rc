@@ -16,6 +16,15 @@ alias cd.........='cd ../../../../../../../..'  # 8
 # NERDTree plugin is just great (TBH, even vim's built-in thing is pretty good on itself)
 alias dir='vim .'
 
+# lazy-typing
+alias d=docker
+alias g=git
+alias h=helm
+alias k=kubectl
+alias p=pachctl
+alias gc=gcloud
+alias tf=terraform
+
 
 # vim: ts=2 sw=2 et
 

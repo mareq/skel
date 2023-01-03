@@ -8,8 +8,8 @@
 # Remap escape key to C-\
 #escape ^\\
 
-# Remap escape key to C-B
-escape ^Bb
+# Remap escape key to C-V
+escape ^Vv
 
 # Set $TERM
 #term screen-256color

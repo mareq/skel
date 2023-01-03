@@ -1,6 +1,0 @@
-alias drun='docker run -it --rm --network=host -v $(pwd):/opt/work --workdir=/opt/work'
-
-
-# vim: ts=2 sw=2 et
-
-

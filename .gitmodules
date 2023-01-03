@@ -142,3 +142,15 @@
 	path = rc.d/__rc-x__.local/share/__rc-d_u-user__nvm
 	url = https://github.com/mareq/nvm.git
 	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/blamer"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/blamer
+	url = https://github.com/mareq/blamer.nvim.git
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/tabnine-vim"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/tabnine-vim
+	url = https://github.com/mareq/tabnine-vim.git
+	branch = skel
+[submodule "rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-terraform"]
+	path = rc.d/__rc-x__.local/share/__rc-d__pathogen_bundle_available/vim-terraform
+	url = https://github.com/mareq/vim-terraform.git
+	branch = skel

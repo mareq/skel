@@ -1,0 +1,33 @@
+\ProvidesPackage{common-aliases}
+
+% blackboard bold (mathbb)
+\usepackage{amsfonts}
+\def\AA{{\mathbb A}}\def\BB{{\mathbb B}}\def\CC{{\mathbb C}}\def\DD{{\mathbb D}}\def\EE{{\mathbb E}}\def\FF{{\mathbb F}}\def\GG{{\mathbb G}}\def\HH{{\mathbb H}}\def\II{{\mathbb I}}\def\JJ{{\mathbb J}}\def\KK{{\mathbb K}}\def\LL{{\mathbb L}}\def\MM{{\mathbb M}}\def\NN{{\mathbb N}}\def\OO{{\mathbb O}}\def\PP{{\mathbb P}}\def\QQ{{\mathbb Q}}\def\RR{{\mathbb R}}\def\SS{{\mathbb S}}\def\TT{{\mathbb T}}\def\UU{{\mathbb U}}\def\VV{{\mathbb V}}\def\WW{{\mathbb W}}\def\XX{{\mathbb X}}\def\YY{{\mathbb Y}}\def\ZZ{{\mathbb Z}}
+
+% calligraphic (euscript)
+\usepackage{euscript}
+\def\aa{{\EuScript A}}\def\bb{{\EuScript B}}\def\cc{{\EuScript C}}\def\dd{{\EuScript D}}\def\ee{{\EuScript E}}\def\ff{{\EuScript F}}\def\gg{{\EuScript G}}\def\hh{{\EuScript H}}\def\ii{{\EuScript I}}\def\jj{{\EuScript J}}\def\kk{{\EuScript K}}\def\ll{{\EuScript L}}\def\mm{{\EuScript M}}\def\nn{{\EuScript N}}\def\oo{{\EuScript O}}\def\pp{{\EuScript P}}\def\qq{{\EuScript Q}}\def\rr{{\EuScript R}}\def\ss{{\EuScript S}}\def\tt{{\EuScript T}}\def\uu{{\EuScript U}}\def\vv{{\EuScript V}}\def\ww{{\EuScript W}}\def\xx{{\EuScript X}}\def\yy{{\EuScript Y}}\def\zz{{\EuScript Z}}
+
+% highlight
+\definecolor{hi}{RGB}{85, 85, 255}
+\definecolor{code}{RGB}{85, 85, 85}
+\newcommand{\hi}[1]{\textbf{\textcolor{hi}{#1}}}
+\newcommand{\code}[1]{\colorbox{code}{\texttt{#1}}}
+\newcommand{\sidenote}[1]{\bigskip\par\noindent\rule{\textwidth}{0.4pt}{\tiny \newline#1}}
+
+% math symbols
+\usepackage{centernot}
+
+
+% vim: ts=2 sw=2 et:
+
+%\section*{Properties of \hi{{{c1::Conditional}}} Probability}
+%
+%\begin{itemize}
+%  \item The \hi{{{c1::conditional}}} probability of an event $A$, given an event $B$ \linebreak with $\PP(B)$ \hi{{{c2::$<$::comparison operator$}}} \hi{{{c2::$0$::number$}}}, is defined by
+%    \par{\center{\hi{{{c3::$\PP(A|B)=\frac{\PP(A \cap B)}{\PP(B)}$}}} $\iff$ \hi{{{c3::$\PP(A \cap B)=\PP(B) \cdot \PP(A|B)$}}}\par}}
+%    and specifies a new (\hi{{{c1::conditional}}}) probability law on the same sample space $\Omega$. In particular, all properties of probability laws remain valid for \hi{{{c1::conditional}}} probability laws.
+%  \item \hi{{{c1::Conditional}}} probabilities can also be viewed as a probability law on a new universe \hi{{{c4::$B$}}}, because all of the \hi{{{c1::conditional}}} probability is concentrated on \hi{{{c4::$B$}}}.
+%  \item If the possible outcomes are finitely many and equally likely, then
+%    \par{\center{\hi{{{c3::$\PP(A|B)=\frac{\PP(number\ of\ elements\ of\ A \cap B)}{\PP(number\ of\ elements\ of\ B)}$}}}\par}}
+%\end{itemize}

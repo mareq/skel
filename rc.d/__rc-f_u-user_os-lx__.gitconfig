@@ -1,17 +1,17 @@
 ; Customized gitconfig file.
 ;
 ; Maintainer:  Marek Balint <mareq@balint.eu>
-; Last change: 2021 Apr 08
+; Last change: 2021 Dec 14
 
 
 [user]
   name = Mareq Balint
   email = mareq@balint.eu
   signingkey = 2C9CDBF5C2536649ABA14C02ADE3E9155318A3C2
-  ;name = Mareq Balint
-  ;email = marek.balint@fluidicanalytics.com
-  ;signingkey = C9B360196340952843366DCB944D86533E027112
+[init]
+  defaultBranch = master
 [core]
+  abbrev = 8
   editor = vim
   ;pager = less -+$LESS -FRX
   ;pager = cat
@@ -23,10 +23,12 @@
 [merge]
   tool = vimdiff
   ;conflictstyle = diff3
+  ;verifySignatures = true
 [pull]
   ff = only
+  ;rebase = true
 [commit]
-   gpgSign = true
+  gpgSign = true
 [push]
   ;default = simple
   default = matching
@@ -36,14 +38,25 @@
   singlekey = true
 [alias]
   unstage = reset --
+  s = status
+  co = checkout
   dt = difftool
   mt = mergetool
   l = log --oneline
   lg = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce> %C(bold red)[%G?:%GS]%Creset' --abbrev-commit
   lg8 = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce> %C(bold red)[%G?:%GS]%Creset' --abbrev-commit -n8
+  lg16 = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce> %C(bold red)[%G?:%GS]%Creset' --abbrev-commit -n16
+  lg32 = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce> %C(bold red)[%G?:%GS]%Creset' --abbrev-commit -n32
   lgnc = log --graph --pretty=format:'%h -%d %s [%ai] <%ae> [%ci] <%ce> [%G?:%GS]' --no-color --abbrev-commit
   llg = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce> %C(bold red)[%G?:%GS]%Creset' --abbrev-commit --all
   llgnc = log --graph --pretty=format:'%h -%d %s [%ai] <%ae> [%ci] <%ce> [%G?:%GS]' --no-color --abbrev-commit --all
+  lgnb = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce> %C(bold red)[%G?:%GS]%Creset' --abbrev-commit
+  lg8nb = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce> %C(bold red)[%G?:%GS]%Creset' --abbrev-commit -n8
+  lg16nb = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce> %C(bold red)[%G?:%GS]%Creset' --abbrev-commit -n16
+  lg32nb = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce> %C(bold red)[%G?:%GS]%Creset' --abbrev-commit -n32
+  lgncnb = log --graph --pretty=format:'%h - %s [%ai] <%ae> [%ci] <%ce> [%G?:%GS]' --no-color --abbrev-commit
+  llgnb = log --graph --pretty=format:'%C(bold yellow)%h%Creset -%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce> %C(bold red)[%G?:%GS]%Creset' --abbrev-commit --all
+  llgncnb = log --graph --pretty=format:'%h - %s [%ai] <%ae> [%ci] <%ce> [%G?:%GS]' --no-color --abbrev-commit --all
   lm = log --left-right --boundary --graph --merge --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit
   llm = log --left-right --boundary --graph --merge --pretty=format:'%C(bold yellow)%h%Creset -%C(bold red)%d%C(bold white) %s %C(bold green)[%ai] %C(bold blue)<%ae> %C(bold green)[%ci] %C(bold blue)<%ce>%Creset' --abbrev-commit --all
   fum = diff --name-only --diff-filter=U

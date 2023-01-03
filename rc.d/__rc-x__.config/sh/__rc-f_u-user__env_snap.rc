@@ -1,0 +1,6 @@
+export PATH=${PATH}:/snap/bin
+
+
+# vim: ts=2 sw=2 et
+
+

@@ -7,11 +7,7 @@ changeps1: false
 auto_activate_base: false
 
 channels:
-  - r
-  - bioconda
-  - conda-forge
   - defaults
-
-# vim: ts=2 sw=2 et
-
-
+  - conda-forge
+  - bioconda
+  - r

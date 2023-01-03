@@ -131,7 +131,7 @@ nmap <silent> ,,Apts A  # type: ignore[]<ESC>
 call add(s:ale_linters_python, "pylint")
 let s:ale_python_pylint_options = []
 let s:ale_python_pylint_options_ignore = [] " ignored errors
-call add(s:ale_python_pylint_options, "--argument-rgx=\"^[a-z][a-z0-9]*(_[a-z0-9]+)*$\"") " allow short argument names (still snake-case)
+call add(s:ale_python_pylint_options, "--argument-rgx=\"^_?[a-z][a-z0-9]*(_[a-z0-9]+)*$\"") " allow short argument names (still snake-case)
 call add(s:ale_python_pylint_options, "--attr-rgx=\"^_{0,2}[a-z][a-z0-9]*(_[a-z0-9]+)*$\"") " allow short attribute names (still snake-case)
 call add(s:ale_python_pylint_options, "--variable-rgx=\"^[a-z][a-z0-9]*(_[a-z0-9]+)*$\"") " allow short variable names (still snake-case)
 call add(s:ale_python_pylint_options, "--class-rgx=\"^[A-Z][a-z0-9]*([A-Z][a-z0-9]+)*$\"") " allow short variable names (still snake-case)

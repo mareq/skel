@@ -1,5 +1,8 @@
 [ $(command -v kubectl >/dev/null 2>&1) ] && source <(kubectl completion bash)
 
+# ssh plugin: https://github.com/jordanwilson230/kubectl-plugins
+export PATH=$PATH:~/.kube/plugins/jordanwilson230
+
 
 # vim: ts=2 sw=2 et
 

@@ -106,9 +106,9 @@ nmap <silent> ,,Apts A  # type: ignore[]<ESC>
 call add(s:ale_linters_python, "pylint")
 let s:ale_python_pylint_options = []
 let s:ale_python_pylint_options_ignore = [] " ignored errors
-call add(s:ale_python_pylint_options, "--argument-rgx=\"^[a-z][a-z0-9]*(_[a-z0-9]+)*$\"") " allow short argument names (still snake-case)
+call add(s:ale_python_pylint_options, "--argument-rgx=\"^_?[a-z][a-z0-9]*(_[a-z0-9]+)*$\"") " allow short argument names (still snake-case)
 call add(s:ale_python_pylint_options, "--attr-rgx=\"^_{0,2}[a-z][a-z0-9]*(_[a-z0-9]+)*$\"") " allow short attribute names (still snake-case)
-call add(s:ale_python_pylint_options, "--variable-rgx=\"^[a-z][a-z0-9]*(_[a-z0-9]+)*$\"") " allow short variable names (still snake-case)
+call add(s:ale_python_pylint_options, "--variable-rgx=\"^_?[a-z][a-z0-9]*(_[a-z0-9]+)*$\"") " allow short variable names (still snake-case)
 call add(s:ale_python_pylint_options, "--class-rgx=\"^[A-Z][a-z0-9]*([A-Z][a-z0-9]+)*$\"") " allow short variable names (still snake-case)
 call add(s:ale_python_pylint_options_ignore, "C0305") " C0305: trailing blank lines
 call add(s:ale_python_pylint_options_ignore, "E0401") " E0401: import-error (TODO: fix this)
@@ -119,9 +119,9 @@ let g:ale_python_pylint_options = join(s:ale_python_pylint_options, ' ')
 " Python fixers
 let s:ale_fixers_python = [
 \ "trim_whitespace",
-\ "isort",
 \ "reorder-python-imports",
 \ "autopep8",
+\ "isort",
 \ "two_trailing_lines",
 \]
 
@@ -179,8 +179,11 @@ nmap <silent> ,,c <NOP>
 nmap <silent> ,,C <NOP>
 
 " EDITING
+" Additional word characters
+autocmd FileType * let b:coc_additional_keywords = ["-"]
 " Trigger autocomplete
 inoremap <silent><expr> <C-Space> coc#refresh()
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 " Format (selected) code
 nmap ,,cf <Plug>(coc-format)
 nmap ,,cF <Plug>(ale_fix)
@@ -192,6 +195,8 @@ nmap ,,cn <Plug>(coc-rename)
 " Apply CodeAction to the selection (normal mode needs selection/motion suffix, such as `omap if` below)
 nmap ,,ca <Plug>(coc-codeaction-selected)
 xmap ,,ca <Plug>(coc-codeaction-selected)
+nmap ,,cA <Plug>(coc-codeaction)
+xmap ,,cA <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap ,,cx <Plug>(coc-fix-current)
 " Refactor current symbol

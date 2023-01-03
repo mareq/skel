@@ -1,0 +1,5 @@
+export TEXMFHOME="${HOME}/.local/share/texmf"
+
+# vim: ts=2 sw=2 et
+
+

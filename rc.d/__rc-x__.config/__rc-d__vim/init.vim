@@ -109,7 +109,7 @@ set indentkeys-=0#
 nnoremap <silent> ,i :set autoindent!<CR>:set cindent!<CR>
 " Automatic formatting
 filetype plugin on
-autocmd FileType * setlocal formatoptions-=crol formatoptions+=n1
+autocmd FileType * setlocal formatoptions-=t formatoptions-=c formatoptions-=r formatoptions-=o formatoptions-=l formatoptions+=n formatoptions+=1
 " Tabs and spaces
 set shiftwidth=2
 set tabstop=2
@@ -126,6 +126,8 @@ set pumheight=16
 
 
 " SEARCH
+" Word characters
+set iskeyword+=-
 " Do incremental searching
 set incsearch
 " Display incomplete commands
@@ -149,6 +151,13 @@ vnoremap <silent> # :<C-U>
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
   \N
+" Move to the opening/closing bracket of the current block
+nnoremap <silent> ,,( va)%<ESC>
+nnoremap <silent> ,,) va)<ESC>
+nnoremap <silent> ,,[ va]%<ESC>
+nnoremap <silent> ,,] va]<ESC>
+nnoremap <silent> ,,{ va}%<ESC>
+nnoremap <silent> ,,} va}<ESC>
 
 
 " YANK & PASTE
@@ -158,6 +167,7 @@ noremap <silent> ,P "0P
 " Yank & paste "+ and "* registers (X11: CLIPBOARD and PRIMARY)
 noremap <silent> ,,y "+y"*y
 noremap <silent> ,,Y "+Y"*Y
+noremap <silent> ,,yy "+Y"*yy
 noremap <silent> ,,p "+p
 noremap <silent> ,,P "+P
 " Map right and middle mouse buttons to yank into "+  and "* registers (X11: CLIPBOARD and PRIMARY)
@@ -343,7 +353,7 @@ nnoremap <silent> ,! :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name")
 " PROVIDERS
 " check providers: `:checkhealth`
 " Python2 provider (uncomment the `loaded_...` line to disable the provider)
-let g:python_host_prog = "/usr/bin/python"
+"let g:python_host_prog = "/usr/bin/python"
 "let g:python_host_prog = "~/.conda/envs/nvim2/bin/python"
 "let g:loaded_python_provider = 1
 " Python3 provider (uncomment the `loaded_...` line to disable the provider)
@@ -357,8 +367,10 @@ let g:python3_host_prog = "/usr/bin/python3"
 " Python settings
 " Do not override user settings
 let g:python_recommended_style = 0
+" Set custom file extensions
+autocmd BufEnter,BufNew *.cwl :set filetype=yaml
 " Set custom settings for tabs and spaces
-au Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 
 
 " vim: ts=2 sw=2 et

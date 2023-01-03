@@ -1,0 +1,14 @@
+alias drun='docker run -it --rm --network=host -v $(pwd):/opt/work --workdir=/opt/work'
+
+alias docker-2375='docker --host "tcp://localhost:2375"'
+alias drun-2375='docker --host "tcp://localhost:2375" run -it --rm --network=host -v $(pwd):/opt/work --workdir=/opt/work'
+
+alias docker-3275='docker --host "tcp://localhost:3275"'
+alias drun-3275='docker --host "tcp://localhost:3275" run -it --rm --network=host -v $(pwd):/opt/work --workdir=/opt/work'
+
+alias docker-dangling-images='docker images -f "dangling=true"'
+alias docker-dangling-images-q='docker images -f "dangling=true" -q'
+
+#vim: ts=2 sw=2 et
+
+

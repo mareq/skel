@@ -1,7 +1,7 @@
 # ZSH configuration
 # Maintainer: Marek Balint <mareq@balint.eu>
 # Last change: 2021 Apr 12
-# 
+#
 # To update plugins:
 # ```
 # $ omz update
@@ -20,7 +20,7 @@ if [ -f "${TMUX_AUTOSTART}" ]; then
     tmux ls > /dev/null 2>&1
     HAS_TMUX_SESSION=${?}
     if [ "${HAS_TMUX_SESSION}" = "0" ]; then
-        exec tmux attach
+        exec tmux attach-session -c "${HOME}"
         echo "DEBUG: tmux attach"
     else
       exec tmux new-session -s default
@@ -42,6 +42,7 @@ fi
 # PLUGINS: OH-MY-ZSH
 export OHMYZSH_HOME="${HOME}/.local/share/oh-my-zsh/"
 plugins=( \
+  # OH-MY-ZSH PLUGINS
   # vi-mode needs to be set early, so that other plugins do the key-bindings correctly
   vi-mode \
   # shell looks
@@ -69,6 +70,7 @@ plugins=( \
   gcloud \
   git \
   git-extras \
+  helm \
   kubectl \
   minikube \
   node \
@@ -80,9 +82,12 @@ plugins=( \
   python \
   rust \
   rustup \
+  terraform \
   # TODO: tmux \
   # TODO: tmuxinator \
   yarn \
+  # CUSTOM PLUGINS
+  conda-zsh-completion
 )
 # make '_' and '-' interchangeable for auto-completion
 HYPHEN_INSENSITIVE="true"
@@ -93,7 +98,7 @@ HYPHEN_INSENSITIVE="true"
 # disable auto-setting terminal title
 DISABLE_AUTO_TITLE="true"
 # enable command auto-correction
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 # Toggle-key for switching b/w global and directory-local history
 PER_DIRECTORY_HISTORY_TOGGLE='^G'
 # do autosuggestions asynchronously
@@ -103,6 +108,9 @@ ZSH_AUTOSUGGEST_USE_ASYNC="true"
 COMPLETION_WAITING_DOTS="true"
 # do not mark untracked files under VCS as dirty
 DISABLE_UNTRACKED_FILES_DIRTY="true"
+# dotenv plugin environment file name (default is `.env`, which seems to clash with rust just)
+# note: directory lists are at `${ZSH_DOTENV_ALLOWED_LIST}`, `${ZSH_DOTENV_DISALLOWED_LIST}`
+ZSH_DOTENV_FILE=.dotenv
 # load plugins
 source "${OHMYZSH_HOME}/oh-my-zsh.sh"
 # Fix the `per-directory-history` plugin
@@ -122,7 +130,7 @@ export ZPLUG_HOME="${HOME}/.local/share/zplug/"
 #zplug "mareq/zplug", hook-build: 'zplug --self-manage'
 zplug "zplug/zplug", hook-build: 'zplug --self-manage'
 zplug "mareq/zsh-autosuggestions", at:skel
-zplug "mareq/zsh-syntax-highlighting", at:skel
+#zplug "mareq/zsh-syntax-highlighting", at:skel
 zplug "mareq/zsh-history-substring-search", at:skel
 zplug "mareq/cargo", at:skel
 zplug "mareq/rust-lang_zsh-config", at:skel

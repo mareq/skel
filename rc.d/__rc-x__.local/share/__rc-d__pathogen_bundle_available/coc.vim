@@ -45,6 +45,7 @@ nmap <silent> ,,C <NOP>
 " EDITING
 " Trigger autocomplete
 inoremap <silent><expr> <C-Space> coc#refresh()
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 " Format (selected) code
 nmap ,,cf <Plug>(coc-format)
 xmap ,,cf <Plug>(coc-format-selected)

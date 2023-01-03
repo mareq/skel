@@ -2,6 +2,11 @@
 
 " Start presentation
 nnoremap <silent> ,,sp :PresentingStart<CR>
+" In-presentation commands:
+" - next slide: n
+" - previous slide: p
+" - stop presenting: q
+
 " Integrate with VimWiki: use horizontal line as slide separator
 "au FileType vimwiki let b:presenting_slide_separator = '----'
 " Integrate with VimWiki: use headings as slide separator

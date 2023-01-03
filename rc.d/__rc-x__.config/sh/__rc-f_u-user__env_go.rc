@@ -1,0 +1,7 @@
+export GOPATH="${HOME}/.local/share/go"
+export PATH="${PATH}:${GOPATH}/bin"
+
+
+# vim: ts=2 sw=2 et
+
+

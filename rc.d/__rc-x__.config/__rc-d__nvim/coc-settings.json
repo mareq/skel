@@ -1,18 +1,19 @@
 {
   "coc.preferences.silentAutoupdate": false,
   "coc.preferences.enableMessageDialog": true,
-  "coc.preferences.previewMaxHeight": 80,
   "coc.preferences.formatOnType": false,
 
   "suggest.autoTrigger": "none",
-  "suggest.numberSelect": true,
-  "suggest.enablePreview": true,
-  "suggest.floatEnable": true,
+  "suggest.noselect": false,
+  "suggest.enablePreselect": true,
+  "suggest.selection": "recentlyUsedByPrefix",
+  "suggest.enableFloat": true,
   "suggest.maxCompleteItemCount": 1024,
-  "suggest.maxPreviewWidth": 120,
-  "suggest.echodocSupport": true,
-  "diagnostic.virtualTextLineSeparator": ": ",
+  "suggest.preferCompleteThanJumpPlaceholder": true,
+  "suggest.acceptSuggestionOnCommitCharacter": true,
+  "suggest.virtualText": true,
 
+  "diagnostic.virtualTextLineSeparator": ": ",
   "diagnostic.enable": true,
   "diagnostic.displayByAle": true,
   "diagnostic.level": "hint",
@@ -31,19 +32,20 @@
   "diagnostic.warningSign": " ",
   "diagnostic.infoSign": " ",
   "diagnostic.hintSign": " ",
-  "diagnostic.maxWindowWidth": 120,
-  "diagnostic.maxWindowHeight": 80,
 
-  "hover.floatMaxWidth": 120,
-  "hover.floatMaxHeight": 80,
   "hover.autoHide": true,
 
   "notification.maxWidth": 120,
   "notification.maxHeight": 80,
 
   "codeLens.enable": true,
-  "codeLens.separator": "     ",
+  "codeLens.separator": "  ",
   "codeLens.subseparator": " ",
+
+  "inlayHint.typeSeparator": "  ",
+  "inlayHint.parameterSeparator": "  ",
+
+  "inlayHint.subSeparator": "",
 
   "refactor.saveToFile": false,
   "refactor.beforeContext": 8,
@@ -61,11 +63,15 @@
 
 
   "rust-analyzer.enable": true,
-  "rust-analyzer.updates.prompt": true,
+  "rust-analyzer.updates.prompt": false,
   "rust-analyzer.updates.channel": "nightly",
-  "rust-analyzer.lruCapacity": 65536,
+  "rust-analyzer.lru.capacity": 65536,
 
-  "rust-analyzer.cargo.runBuildScripts": true,
+  "rust-analyzer.cargo.buildScripts.enable": true,
+  "rust-analyzer.cargo.autoreload": true,
+  "rust-analyzer.cargo.buildScripts.useRustcWrapper": true,
+
+  "rust-analyzer.procMacro.enable": true,
   "rust-analyzer.checkOnSave.enable": true,
   "rust-analyzer.checkOnSave.allTargets": true,
   "rust-analyzer.checkOnSave.overrideCommand": null,
@@ -75,23 +81,68 @@
   "rust-analyzer.rustfmt.overrideCommand": null,
   "rust-analyzer.rustfmt.extraArgs": [],
 
-  "rust-analyzer.inlayHints.enable": true,
-  "rust-analyzer.inlayHints.typeHints": true,
-  "rust-analyzer.inlayHints.typeHintsSeparator": "     ",
-  "rust-analyzer.inlayHints.chainingHints": true,
-  "rust-analyzer.inlayHints.chainingHintsSeparator": "     ",
-  "rust-analyzer.inlayHints.typeHintsWithVariable": true,
-  "rust-analyzer.inlayHints.refreshOnInsertMode": true,
+  "rust-analyzer.inlayHints.maxLength": null,
+  "rust-analyzer.inlayHints.renderColons": true,
+  "rust-analyzer.inlayHints.bindingModeHints.enable": true,
+  "rust-analyzer.inlayHints.chainingHints.enable": true,
+  "rust-analyzer.inlayHints.closingBraceHints.enable": true,
+  "rust-analyzer.inlayHints.closingBraceHints.minLines": 0,
+  "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "always",
+  "rust-analyzer.inlayHints.expressionAdjustmentHints.enable": "never",
+  "rust-analyzer.inlayHints.lifetimeElisionHints.enable": "always",
+  "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
+  "rust-analyzer.inlayHints.parameterHints.enable": true,
+  "rust-analyzer.inlayHints.reborrowHints.enable": "never",
+  "rust-analyzer.inlayHints.typeHints.enable": true,
+  "rust-analyzer.inlayHints.typeHints.hideClosureInitialization": false,
+  "rust-analyzer.inlayHints.typeHints.hideNamedConstructor": false,
 
   "rust-analyzer.lens.enable": true,
-  "rust-analyzer.lens.run": true,
-  "rust-analyzer.lens.implementation": true,
-  "rust-analyzer.lens.methodReferences": true,
+  "rust-analyzer.lens.debug.enable": false,
+  "rust-analyzer.lens.run.enable": false,
+  "rust-analyzer.lens.implementations.enable": false,
+  "rust-analyzer.lens.references.adt.enable": false,
+  "rust-analyzer.lens.references.enumVariant.enable": false,
+  "rust-analyzer.lens.references.method.enable": false,
+  "rust-analyzer.lens.references.trait.enable": false,
+  "rust-analyzer.lens.location": "above_name",
+
+  "rust-analyzer.highlightRelated.exitPoints.enable": true,
+  "rust-analyzer.highlightRelated.references.enable": true,
+  "rust-analyzer.highlightRelated.breakPoints.enable": true,
+  "rust-analyzer.highlightRelated.yieldPoints.enable": true,
 
 
 
 
+  "clangd.path": "/home/mareq/.local/share/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd",
+  "rome.enable": true,
 
-  "clangd.path": "/home/mareq/.local/share/coc/extensions/coc-clangd-data/install/11.0.0/clangd_11.0.0/bin/clangd",
-  "rome.enable": true
+
+
+
+  "python.linting.enabled": true,
+  "python.analysis.useLibraryCodeForTypes": true,
+  "python.linting.pylintArgs": ["--generate-members"],
+
+
+
+
+  "javascript.referencesCodeLens.enable": false,
+  "javascript.implementationsCodeLens.enable": false,
+  "typescript.referencesCodeLens.enable": false,
+  "typescript.implementationsCodeLens.enable": false,
+
+
+
+
+  "cSpell.userWords": [
+    "arange",
+    "Dlbdbccarfadqcca",
+    "dtype",
+    "ndim",
+    "pyplot",
+    "xlabel",
+    "ylabel"
+  ]
 }

@@ -1,0 +1,12 @@
+aws_profile() {
+  export AWS_PROFILE="$1"
+}
+
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
+complete -C '/usr/local/bin/aws_completer' aws
+
+
+# vim: ts=2 sw=2 et
+
+

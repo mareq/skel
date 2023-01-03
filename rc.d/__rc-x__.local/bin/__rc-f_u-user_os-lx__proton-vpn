@@ -1,0 +1,16 @@
+#!/bin/sh
+
+echo "Starting nm-applet in the background..."
+/usr/bin/nm-applet &
+
+echo
+echo "Launching Proton VPN..."
+
+/usr/bin/protonvpn
+
+echo
+echo "Cleaning up..."
+
+kill -- -$$
+
+

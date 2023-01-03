@@ -815,18 +815,28 @@ let s:PluginCoCHighlightGroups = [
     \ 'term': 'bold',    'cterm': 'bold',    'fg': s:Blue.medium, 'bg': s:Black.medium,
   \},
   \{
-    \ 'group': 'CoCHintHighlight',
+    \ 'group': 'CoCHintSign',
     \ 'descr': '',
-    \ 'term': 'bold',    'cterm': 'bold',    'fg': s:Green.light, 'bg': s:Black.dark,
+    \ 'term': 'bold',    'cterm': 'bold',    'fg': s:Blue.light, 'bg': s:Black.medium,
   \},
   \{
     \ 'group': 'CoCHintVirtualText',
     \ 'descr': '',
-    \ 'term': 'bold',    'cterm': 'bold',    'fg': s:Green.light, 'bg': s:DefaultColor,
+    \ 'term': 'bold',    'cterm': 'bold',    'fg': s:Green.light, 'bg': s:Green.dark,
   \},
   \{
-    \ 'group': 'CoCHintSign',
-    \ 'descr': 'XXX: This is used not only for hint sign, but also for virtual-text with type hints: need s:DefaultColor for background for those hints, but should have s:Black.medium for hint sign (breaking background color of hint sign is lesser evil as that icon is just one character and is not as abundant as type hints).',
+    \ 'group': 'CoCHintHighlight',
+    \ 'descr': '',
+    \ 'term': 'bold',    'cterm': 'bold',    'fg': s:Green.light, 'bg': s:Blue.dark,
+  \},
+  \{
+    \ 'group': 'CoCHintLine',
+    \ 'descr': '',
+    \ 'term': 'bold',    'cterm': 'bold',    'fg': s:Black.light, 'bg': s:Yellow.dark,
+  \},
+  \{
+    \ 'group': 'CoCInlayHint',
+    \ 'descr': '',
     \ 'term': 'bold',    'cterm': 'bold',    'fg': s:Black.light, 'bg': s:DefaultColor,
   \},
   \{
@@ -855,6 +865,16 @@ let s:PluginCoCHighlightGroups = [
     \ 'term': 'bold',    'cterm': 'bold',    'fg': s:Blue.light, 'bg': s:DefaultColor,
   \},
 \]
+"
+" Highlight groups for Blamer plugin
+let s:PluginBlamerHighlightGroups = [
+  \{
+    \ 'group': 'Blamer',
+    \ 'descr': '',
+    \ 'term': 'bold',    'cterm': 'bold',    'fg': s:Black.light, 'bg': s:DefaultColor,
+  \},
+\]
+
 
 " Highlight groups for VimWiki plugin
 let s:PluginVimWikiHighlightGroups = [
@@ -961,7 +981,7 @@ let s:PluginVimWikiHighlightGroups = [
   \{
     \ 'group': 'VimwikiTag',
     \ 'descr': '',
-    \ 'term': 'none',    'cterm': 'none',    'fg': s:Magenta.base_light, 'bg': s:DefaultColor,
+    \ 'term': 'none',    'cterm': 'none',    'fg': s:Yellow.dark, 'bg': s:DefaultColor,
   \},
   \{
     \ 'group': 'VimwikiComment',
@@ -1045,6 +1065,7 @@ call ApplyColorScheme(s:PluginBufExplorerHighlightGroups)
 call ApplyColorScheme(s:PluginGitGutterHighlightGroups)
 call ApplyColorScheme(s:PluginALEHighlightGroups)
 call ApplyColorScheme(s:PluginCoCHighlightGroups)
+call ApplyColorScheme(s:PluginBlamerHighlightGroups)
 call ApplyColorScheme(s:PluginVimWikiHighlightGroups)
 call ApplyColorScheme(s:PluginTaskWikiHighlightGroups)
 
