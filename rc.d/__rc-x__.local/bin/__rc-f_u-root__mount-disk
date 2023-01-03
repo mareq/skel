@@ -20,7 +20,7 @@ if [ ${?} != 0 ]; then
   echo "        - path stored in the \$DISK_RC variable:"
   echo "            DISK_RC='<path-to-rc-file>' ${0}"
   echo "        - path constructed using the disk ID:"
-  echo "        -   ${DISK_RC_PATH_BASE}/\<disk-id\>.rc"
+  echo "            ${DISK_RC_PATH_BASE}/\<disk-id\>.rc"
   echo
   echo "  Hint: The disk ID is being looked for at these locations:"
   echo "        - value stored in the \$DISK_ID variable:"
@@ -28,6 +28,8 @@ if [ ${?} != 0 ]; then
   echo "        - the first command-line argument to this script:"
   echo "            ${0} <disk-id>"
   echo
+  echo " Disk configurations found:"
+  ls /root/.config/disks/*.rc | xargs -I{} basename {} | sed 's/\.rc$//' | xargs -I{} echo "   - {}"
   exit 1
 fi
 
