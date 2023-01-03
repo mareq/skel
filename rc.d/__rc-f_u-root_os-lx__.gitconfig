@@ -13,6 +13,8 @@
   ;pager = cat
   autocrlf = false
   excludesfile = /root/.gitignore_global
+[init]
+  defaultBranch = master
 [diff]
   tool = vimdiff
   submodule = log
