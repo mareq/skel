@@ -1,0 +1,7 @@
+# kubectl plugin manager
+export PATH=${PATH}:${HOME}/.krew/bin
+
+
+# vim: ts=2 sw=2 et
+
+

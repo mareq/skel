@@ -18,11 +18,24 @@ alias dir='vim .'
 
 # lazy-typing
 alias d=docker
+alias f='find .'
+alias fa='find . -name'
+alias fd='find . -type d -name'
+alias ff='find . -type f -name'
 alias g=git
+alias gc=gcloud
+alias gr='grep -rnHI'
+alias gri='grep -rnHIi'
+alias h2='head -n2'
+alias h4='head -n4'
+alias h8='head -n8'
+alias h16='head -n16'
+alias h32='head -n32'
+alias h64='head -n64'
 alias h=helm
 alias k=kubectl
 alias p=pachctl
-alias gc=gcloud
+alias rscp='rsync -avHEXAU'
 alias tf=terraform
 
 

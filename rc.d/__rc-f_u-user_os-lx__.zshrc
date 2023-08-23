@@ -227,6 +227,7 @@ setopt no_share_history
 setopt hist_verify
 
 # ADDITIONAL CONFIGURATION
+alias zshup='source "${HOME}/.zshrc"'
 export SHRC_D="${HOME}/.config/sh/"
 for rcfile in $(find ${SHRC_D} -maxdepth 1 -type f -or -type l); do
   source "${rcfile}"

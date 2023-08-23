@@ -13,8 +13,8 @@ nmap <silent>,,dJ <Plug>VimspectorStop
 nmap <silent>,,dl <Plug>VimspectorStepOver
 nmap <silent>,,dL <Plug>VimspectorStepInto
 nmap <silent>,,dh <Plug>VimspectorStepOut
+nmap <silent>,,df <Plug>VimspectorDownFrame
 nmap <silent>,,dd <Plug>VimspectorUpFrame
-nmap <silent>,,df <Plug>VimspectorUpFrame
 nmap <silent>,,d; <Plug>VimspectorRunToCursor
 " Watches
 nmap <silent>,,dw <Plug>VimspectorBalloonEval

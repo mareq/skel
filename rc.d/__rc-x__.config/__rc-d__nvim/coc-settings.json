@@ -17,8 +17,9 @@
   "diagnostic.enable": true,
   "diagnostic.displayByAle": true,
   "diagnostic.level": "hint",
+  "diagnostic.autoRefresh": true,
+  "diagnostic.refreshOnInsertMode": false,
   "diagnostic.checkCurrentLine": true,
-  "diagnostic.refreshOnInsertMode": true,
   "diagnostic.virtualText": true,
   "diagnostic.virtualTextCurrentLineOnly": false,
   "diagnostic.virtualTextPrefix": "     ",
@@ -115,15 +116,20 @@
 
 
 
-  "clangd.path": "/home/mareq/.local/share/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd",
+  "clangd.path": "~/.local/share/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd",
   "rome.enable": true,
 
 
 
 
-  "python.linting.enabled": true,
+  "python.linting.enabled": false,
+  "python.linting.mypyEnabled": true,
+  "python.linting.mypyArgs": ["--check-untyped-defs"],
+  "python.analysis.diagnosticMode": "openFilesOnly",
   "python.analysis.useLibraryCodeForTypes": true,
-  "python.linting.pylintArgs": ["--generate-members"],
+  "python.linting.pylintArgs": ["--generate-members", "--check-untyped-defs"],
+  "python.formatting.provider": "black",
+  "pyright.organizeimports.provider": "isort",
 
 
 

@@ -24,12 +24,12 @@ nmap <silent> ,,aj :ALEDisableBuffer<CR>
 " Allow only explicitly setup linters
 let g:ale_linters_explicit = 1
 " When to run linters
-"let g:ale_lint_on_enter = 0
+let g:ale_lint_on_enter = 0
 "let g:ale_lint_on_text_changed = "never"
 "let g:ale_lint_on_insert_leave = 0
 "let g:ale_lint_on_save = 0
 "let g:ale_lint_on_filetype_changed = 0
-let g:ale_lint_on_enter = 1
+"let g:ale_lint_on_enter = 1
 let g:ale_lint_on_text_changed = "normal"
 let g:ale_lint_on_insert_leave = 1
 let g:ale_lint_on_save = 1
@@ -106,10 +106,11 @@ nmap <silent> ,,Apts A  # type: ignore[]<ESC>
 call add(s:ale_linters_python, "pylint")
 let s:ale_python_pylint_options = []
 let s:ale_python_pylint_options_ignore = [] " ignored errors
+call add(s:ale_python_pylint_options, "--max-line-length=120") " set maximum line length to custom value
 call add(s:ale_python_pylint_options, "--argument-rgx=\"^_?[a-z][a-z0-9]*(_[a-z0-9]+)*$\"") " allow short argument names (still snake-case)
 call add(s:ale_python_pylint_options, "--attr-rgx=\"^_{0,2}[a-z][a-z0-9]*(_[a-z0-9]+)*$\"") " allow short attribute names (still snake-case)
 call add(s:ale_python_pylint_options, "--variable-rgx=\"^_?[a-z][a-z0-9]*(_[a-z0-9]+)*$\"") " allow short variable names (still snake-case)
-call add(s:ale_python_pylint_options, "--class-rgx=\"^[A-Z][a-z0-9]*([A-Z][a-z0-9]+)*$\"") " allow short variable names (still snake-case)
+call add(s:ale_python_pylint_options, "--class-rgx=\"^[A-Z][a-z0-9]*([A-Z][a-z0-9]*)*$\"") " allow short class names (still camel-case)
 call add(s:ale_python_pylint_options_ignore, "C0305") " C0305: trailing blank lines
 call add(s:ale_python_pylint_options_ignore, "E0401") " E0401: import-error (TODO: fix this)
 call add(s:ale_python_pylint_options_ignore, "W0106") " W0106: expression-not-assigned
@@ -120,9 +121,10 @@ let g:ale_python_pylint_options = join(s:ale_python_pylint_options, ' ')
 let s:ale_fixers_python = [
 \ "trim_whitespace",
 \ "reorder-python-imports",
-\ "autopep8",
+"\ "autopep8",
+\ "black",
 \ "isort",
-\ "two_trailing_lines",
+"\ "two_trailing_lines",
 \]
 
 " ALE initialize linters and fixers specified above
@@ -252,6 +254,8 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 " DIAGNOSTICS
 " Toggle diagnostics on/off
 nmap <silent> ,,cd :call CocAction("diagnosticToggle")<CR>
+" Refresh CoC diagnostics on writing the buffer (Error on notification "diagnostic.refresh": Action "diagnostic.refresh" not exist)
+"autocmd BufWritePost * silent call CocActionAsync('diagnostic.refresh')
 " Jump around diagnostic messages (let ALE do that when using both ALE & CoC in the same time)
 "nmap <silent> [d <Plug>(coc-diagnostic-prev)
 "nmap <silent> ]d <Plug>(coc-diagnostic-next)
@@ -273,8 +277,8 @@ nmap <silent> <SPACE>D :CocDiagnostics<CR>
 "   coc-eslint
 "   coc-gist
 "   coc-html
-"   coc-htmlhint
 "   coc-html-css-support
+"   coc-htmlhint
 "   coc-java
 "   coc-jedi
 "   coc-json
@@ -282,17 +286,18 @@ nmap <silent> <SPACE>D :CocDiagnostics<CR>
 "   coc-markdownlint
 "   coc-perl
 "   coc-prettier
-"   coc-python
 "   coc-pydocstring
+"   coc-pyright
+"autocmd FileType python let b:coc_root_patterns = ['setup.cfg', 'pyproject.toml', 'app.py', 'setup.py', 'manage.py', 'requirements.txt', 'pyrightconfig.json']
 "   coc-rls
 "   coc-rome
 "   coc-rust-analyzer
 "   coc-sh
-"   coc-stylelintplus
-"   coc-stylelint
 "   coc-snippets
 "   coc-spell-checker
 "   coc-sql
+"   coc-stylelint
+"   coc-stylelintplus
 "   coc-swagger
 "   coc-texlab
 "   coc-toml
