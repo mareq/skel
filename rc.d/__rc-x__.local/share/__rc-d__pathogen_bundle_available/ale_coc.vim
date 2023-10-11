@@ -276,6 +276,7 @@ nmap <silent> <SPACE>D :CocDiagnostics<CR>
 "   coc-diagnostic
 "   coc-eslint
 "   coc-gist
+"   coc-hls
 "   coc-html
 "   coc-html-css-support
 "   coc-htmlhint

@@ -6,7 +6,8 @@ echo "Starting nm-applet in the background..."
 echo
 echo "Launching Proton VPN..."
 
-/usr/bin/protonvpn
+#/usr/bin/protonvpn
+/usr/bin/protonvpn-app
 
 echo
 echo "Cleaning up..."
