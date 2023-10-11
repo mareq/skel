@@ -53,6 +53,8 @@
   spush = push --recurse-submodules=check
   repair-dates = filter-branch --env-filter 'GIT_COMMITTER_DATE=$GIT_AUTHOR_DATE; export GIT_COMMITTER_DATE'
   ls-branches-gone = !git fetch -p && git branch -vv | grep ': gone' | awk '{print $1}'
+[protocol "file"]
+  allow = always
 
 
 ; vim: ts=2 sw=2 et
